@@ -42,12 +42,14 @@
     "loose-envify": "^1.1.0",
     "phantomjs": "^1.9.19",
     "proxyquireify": "^3.0.1",
+    "stylus": "^0.53.0",
     "uglify-js": "^2.6.1",
     "unreachable-branch-transform": "^0.5.0",
     "vue-hot-reload-api": "^1.2.2",
     "vue-router": "^0.7.7",
     "vueify": "^8.0.0",
     "vueify-insert-css": "^1.0.0",
+    "vuex": "^0.2.0",
     "watchify": "^3.4.0"
   }
 }
