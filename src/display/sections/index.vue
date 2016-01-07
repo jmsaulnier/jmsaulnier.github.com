@@ -1,6 +1,7 @@
 <template>
-  <div class="component-hello">
+  <div class="section-index">
     <h1>{{ msg }}</h1>
+    <a v-link="{ path: '/work/test' }">Work</a>
   </div>
 </template>
 
@@ -8,7 +9,7 @@
 export default {
   data () {
     return {
-      msg: 'Hello World!'
+      msg: 'Welcome!'
     }
   }
 }

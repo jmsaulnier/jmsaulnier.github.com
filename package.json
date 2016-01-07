@@ -29,6 +29,7 @@
     "budo": "^7.1.0",
     "bundle-collapser": "^1.2.1",
     "cross-env": "^1.0.7",
+    "es6-promise": "^3.0.2",
     "eslint": "^1.10.3",
     "eslint-plugin-html": "^1.1.0",
     "http-server": "^0.8.5",
@@ -44,6 +45,7 @@
     "uglify-js": "^2.6.1",
     "unreachable-branch-transform": "^0.5.0",
     "vue-hot-reload-api": "^1.2.2",
+    "vue-router": "^0.7.7",
     "vueify": "^8.0.0",
     "vueify-insert-css": "^1.0.0",
     "watchify": "^3.4.0"

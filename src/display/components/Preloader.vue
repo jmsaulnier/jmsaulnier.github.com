@@ -1,5 +1,5 @@
 <template>
-  <div class="component-hello">
+  <div class="component-preloader">
     <h1>{{ msg }}</h1>
   </div>
 </template>
@@ -8,7 +8,7 @@
 export default {
   data () {
     return {
-      msg: 'Hello World!'
+      msg: 'Preloader!'
     }
   }
 }

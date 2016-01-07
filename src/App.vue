@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <hello></hello>
+    <router-view class="sections"></router-view>
   </div>
 </template>
 
@@ -15,6 +16,11 @@ export default {
 </script>
 
 <style>
+
+[v-cloak] {
+  display: none;
+}
+
 body {
   font-family: Helvetica, sans-serif;
 }
