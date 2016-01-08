@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
-import { configRouter } from './route-config'
+import { configRouter as ConfigRouter } from './route-config'
 require('es6-promise').polyfill()
 
 Vue.use(VueRouter)
@@ -12,10 +12,10 @@ const router = new VueRouter({
   saveScrollPosition: true
 })
 
-configRouter(router)
+ConfigRouter(router)
  
 const App = Vue.extend(require('./App.vue'))
-router.start(App, 'body')
+router.start(App, '#app')
 
 // just for debugging
 window.router = router

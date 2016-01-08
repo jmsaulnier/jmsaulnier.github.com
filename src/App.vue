@@ -2,20 +2,33 @@
 
 <template>
   <div id="app">
-    <preloader></preloader>
-    <about></about>
-    <router-view class="sections"></router-view>
+    <preloader v-if="!isHidden"></preloader>
+    <router-view class="sections" v-if="isLoaded"></router-view>
   </div>
 </template>
 
 <script>
-import About from './display/components/About.vue'
 import Preloader from './display/components/Preloader.vue'
+import Store from './store/preloader'
 
 export default {
   components: {
-    About,
     Preloader
-  }
+  },
+
+  data () {
+    return {
+      
+    }
+  },
+
+  computed: {
+    isLoaded () {
+      return (Store.state.progress >= 1)
+    },
+    isHidden () {
+      return Store.state.isHidden
+    }
+  },
 }
 </script>

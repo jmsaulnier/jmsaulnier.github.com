@@ -5,8 +5,8 @@ export function configRouter (router) {
             component: require('./display/sections/Index.vue')
         },
 
-        '/work/:id': {
-            component: require('./display/sections/Work.vue')
+        '/projects/:id': {
+            component: require('./display/sections/Project.vue')
         },
 
         '*': {
