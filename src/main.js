@@ -13,9 +13,9 @@ const router = new VueRouter({
 })
 
 configRouter(router)
-
+ 
 const App = Vue.extend(require('./App.vue'))
-router.start(App, '#app')
+router.start(App, 'body')
 
 // just for debugging
 window.router = router

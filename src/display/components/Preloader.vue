@@ -1,3 +1,5 @@
+<style lang="stylus" src="./Preloader.styl"></style>
+
 <template>
   <div class="component-preloader">
     <h1>{{ msg }}</h1>

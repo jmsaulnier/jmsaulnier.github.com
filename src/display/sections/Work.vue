@@ -1,3 +1,5 @@
+<style lang="stylus" src="./Work.styl"></style>
+
 <template>
   <div class="section-work">
     <a v-link="{ path: '/' }">Back</a>

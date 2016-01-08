@@ -1,3 +1,5 @@
+<style lang="stylus" src="./Index.styl"></style>
+
 <template>
   <div class="section-index">
     <h1>{{ msg }}</h1>
