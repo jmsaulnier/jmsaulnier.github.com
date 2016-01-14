@@ -2,7 +2,7 @@ export function configRouter (router) {
 
     router.map({
         '/': {
-            component: require('./display/sections/Index.vue')
+            component: require('./display/sections/Home.vue')
         },
 
         '/projects/:id': {
@@ -10,7 +10,7 @@ export function configRouter (router) {
         },
 
         '*': {
-            component: require('./display/sections/Index.vue')
+            component: require('./display/sections/Home.vue')
         }
     })
 }

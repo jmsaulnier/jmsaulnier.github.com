@@ -1,9 +1,9 @@
 <style lang="stylus" src="./About.styl"></style>
 
 <template>
-  <div class="component-about">
+  <section class="section-about">
     <h1>{{ msg }}</h1>
-  </div>
+  </section>
 </template>
 
 <script>

@@ -2,18 +2,18 @@
 
 <template>
   <div id="app">
-    <preloader v-if="!isHidden"></preloader>
+    <section-preloader v-if="!isHidden"></section-preloader>
     <router-view class="sections" v-if="isLoaded"></router-view>
   </div>
 </template>
 
 <script>
-import Preloader from './display/components/Preloader.vue'
-import Store from './store/preloader'
+import SectionPreloader from './display/sections/Preloader.vue'
+import StorePreloader from './store/preloader'
 
 export default {
   components: {
-    Preloader
+    SectionPreloader
   },
 
   data () {
@@ -24,10 +24,10 @@ export default {
 
   computed: {
     isLoaded () {
-      return (Store.state.progress >= 1)
+      return (StorePreloader.state.progress >= 1)
     },
     isHidden () {
-      return Store.state.isHidden
+      return StorePreloader.state.isHidden
     }
   },
 }

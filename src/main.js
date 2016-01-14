@@ -17,5 +17,7 @@ ConfigRouter(router)
 const App = Vue.extend(require('./App.vue'))
 router.start(App, '#app')
 
+document.body.style.backgroundColor = '#000';
+
 // just for debugging
 window.router = router
