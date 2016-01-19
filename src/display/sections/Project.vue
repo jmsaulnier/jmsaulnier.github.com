@@ -1,46 +1,56 @@
-<style lang="stylus" src="./Project.styl"></style>
+<style lang="stylus">
+.section-project
+  color #ff0
+  .titles
+    position absolute
+</style>
 
 <template>
   <section class="section-project">
-    <div v-el:component-project-title>
-      <li v-for="title in titles" transition='project-title'>
-        <component-project-title v-bind:title="title"></component-project-title>
-      </li>
+    <div class="titles" v-for="project in projects" transition='project-title'>
+      <component-project-title v-bind:project="project"></component-project-title>
     </div>
-    <a v-link="{ name: 'project', params: { id: 'mockingjay' }}"><img  src="assets/images/yeoman.png" /></a>
-    <a v-link="{ name: 'project', params: { id: 'mission-impossible' }}"><img src="assets/images/yeoman.png" /></a>
-    <a v-link="{ name: 'project', params: { id: 'into-the-storm' }}"><img src="assets/images/yeoman.png" /></a>
-    <a v-link="{ name: 'project', params: { id: 'porsche' }}"><img src="assets/images/yeoman.png" /></a>
-    <a v-link="{ name: 'project', params: { id: 'jupiter-ascending' }}"><img src="assets/images/yeoman.png" /></a>
+    <component-project-navigation ></component-project-navigation>
   </section>
 </template>
 
 <script>
 
 import ComponentProjectTitle from '../components/project/Title.vue'
+import ComponentProjectNavigation from '../components/project/Navigation.vue'
 
+import Projects from '../../api/projects'
 import Store from '../../store/project'
 
 export default {
 
   components: {
-    ComponentProjectTitle
+    ComponentProjectTitle,
+    ComponentProjectNavigation
   },
   route: {
     data: function (transition) {
 
-      this.titles.push(this.getTitle(this.$route.params.id))
+      if(Projects[this.$route.params.id]) {
 
-      if(this.titles.length > 1) {
-        this.titles.shift();
+        this.projects.push(this.$route.params.id)
+
+        if(this.projects.length > 1) {
+          this.projects.shift();
+        }
+
+        Store.actions.update(this.$route.params.id)
+
+      } else {
+
+        transition.redirect('/')
+        
       }
-
-      Store.actions.update(this.$route.params.id)
     }
   },
   data () {
     return {
-      titles: []
+      projects: []
     }
   },
   attached () {
@@ -54,16 +64,7 @@ export default {
 
   },
   methods: {
-    /**
-    * getTitle
-    */
-    getTitle (project) {
-
-      return project.split('-').map(s =>
-          s.charAt(0).toUpperCase() + s.slice(1)
-      ).join(' ');
-
-    }
+    
   } 
 }
 

@@ -1,4 +1,7 @@
-<style lang="stylus" src="./About.styl"></style>
+<style lang="stylus">
+.section-about
+  color #f00
+</style>
 
 <template>
   <section class="section-about">

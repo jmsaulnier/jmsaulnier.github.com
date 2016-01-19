@@ -29,9 +29,7 @@ export default {
   },
   attached () {
 
-    this.reset();
-    this.show();
-
+    this.resize();
     Resize.addListener(this.resize);
 
   },
@@ -41,14 +39,6 @@ export default {
 
   },
   methods: {
-  	/**
-    * reset
-    */
-    reset () {
-
-      this.resize();
-
-    },
     /**
     * resize
     */
@@ -56,21 +46,7 @@ export default {
 
       Css(this.$el, { width: Resize.width, height: Resize.height });
 
-    },
-    /**
-    * show
-    */
-    show () {
-      
-
-    },
-    /**
-    * hide
-    */
-    hide () {
-
-
-    },
+    }
   }
 }
 </script>
