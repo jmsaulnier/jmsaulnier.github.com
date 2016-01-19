@@ -130,7 +130,7 @@ export default {
         { translateY: '-100%' }, 
         { duration: 1000, delay: 100, easing: 'easeInOutCubic', complete: () => { Store.actions.hide() } }
       );
-    },
+    }
   }
 }
 </script>
