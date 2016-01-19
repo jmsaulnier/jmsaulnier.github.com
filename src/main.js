@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import { configRouter as ConfigRouter } from './core/routes'
 require('es6-promise').polyfill()
 
+
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
