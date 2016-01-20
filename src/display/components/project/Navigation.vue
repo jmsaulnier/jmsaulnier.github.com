@@ -67,8 +67,15 @@ export default {
     */
     resize () {
 
-      Css(this.$els.previous, { top: (Resize.height - this.$els.previous.offsetHeight)* .5, left: - (this.$els.previous.offsetWidth - this.$els.previous.offsetHeight) * 0.5 + Resize.width * 0.02});
-      Css(this.$els.next, { top: (Resize.height - this.$els.next.offsetHeight)* .5, left: (Resize.width - (this.$els.next.offsetWidth + this.$els.next.offsetHeight) * 0.5) - Resize.width * 0.02 }); 
+      Css(this.$els.previous, { 
+        top: (Resize.height - this.$els.previous.offsetHeight)* .5, 
+        left: - (this.$els.previous.offsetWidth - this.$els.previous.offsetHeight) * 0.5 + Resize.width * 0.02
+      });
+
+      Css(this.$els.next, { 
+        top: (Resize.height - this.$els.next.offsetHeight)* .5, 
+        left: (Resize.width - (this.$els.next.offsetWidth + this.$els.next.offsetHeight) * 0.5) - Resize.width * 0.02 
+      }); 
 
     },
     /**

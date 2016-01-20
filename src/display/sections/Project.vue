@@ -7,6 +7,7 @@
 
 <template>
   <section class="section-project">
+    <component-project-details v-if="isDetailsOpen" transition='project-details'></component-project-details>
     <div class="titles" v-for="project in projects" transition='project-title'>
       <component-project-title v-bind:project="project"></component-project-title>
     </div>
@@ -18,15 +19,18 @@
 
 import ComponentProjectTitle from '../components/project/Title.vue'
 import ComponentProjectNavigation from '../components/project/Navigation.vue'
+import ComponentProjectDetails from '../components/project/Details.vue'
 
 import Projects from '../../api/projects'
 import Store from '../../store/project'
+import StoreAbout from '../../store/about'
 
 export default {
 
   components: {
     ComponentProjectTitle,
-    ComponentProjectNavigation
+    ComponentProjectNavigation,
+    ComponentProjectDetails
   },
   route: {
     data: function (transition) {
@@ -46,11 +50,19 @@ export default {
         transition.redirect('/')
         
       }
+
+      // if navigate with history (ex: browser back button) > close about panel
+      StoreAbout.actions.close();
     }
   },
   data () {
     return {
       projects: []
+    }
+  },
+  computed: {
+    isDetailsOpen () {
+      return Store.state.isDetailsOpen
     }
   },
   attached () {

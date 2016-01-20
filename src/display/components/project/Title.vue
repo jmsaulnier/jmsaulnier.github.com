@@ -22,6 +22,12 @@
     font-size 0.5em
     @media screen and (max-width: 40em)
       font-size 0.4em
+  h4
+    cursor pointer
+    font-weight normal
+    font-size 0.3em
+    @media screen and (max-width: 40em)
+      font-size 0.2em    
 </style>
 
 <template>
@@ -30,6 +36,7 @@
       <h2>{{title}}</h2>
       <br />
       <h3>{{category}}</h3>
+      <h4><a @click="openDetails">View details</a></h4>
     </div>
   </span>
 </template>
@@ -87,7 +94,15 @@ export default {
 
       Css(this.$el, { width: Resize.width, height: Resize.height });
 
-    }
+    },
+    /**
+    * openDetails
+    */
+    openDetails () {
+
+      Store.actions.openDetails();
+      
+    },
   }
 }
 

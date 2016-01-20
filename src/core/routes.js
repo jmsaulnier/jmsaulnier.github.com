@@ -1,5 +1,3 @@
-import Find from 'lodash.find';
-
 import Projects from '../api/projects'
 
 export function configRouter (router) {
