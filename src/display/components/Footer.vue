@@ -61,7 +61,7 @@ export default {
     */
     resize () {
 
-      Css(this.$el, { width: Resize.width, top: Resize.height - this.$els.links.scrollHeight });
+      Css(this.$el, { width: Resize.width, top: Resize.height - this.$els.links.offsetHeight });
 
     },
     /**

@@ -1,21 +1,36 @@
 <style lang="stylus">
 .component-project-title
-  position absolute
+  display flex;
+  position: relative;
   z-index 10
+  justify-content center
+  align-items center
   text-align center
   color #fff
   font-size 3em
-  perspective: 600px;
-  h2 
+  perspective 600px;
+  h2, h3 
     position relative
     display inline-block
     background-color #000
+  h2
+    margin-bottom 0.5em
+    font-size 1em
+    @media screen and (max-width: 40em)
+      font-size 0.6em
+  h3
+    font-size 0.5em
+    @media screen and (max-width: 40em)
+      font-size 0.4em
 </style>
 
 <template>
   <span class="component-project-title">
-    <h2>{{title}}</h2>
-    <h2>{{category}}</h2>
+    <span>
+      <h2>{{title}}</h2>
+      <br />
+      <h3>{{category}}</h3>
+    </div>
   </span>
 </template>
 

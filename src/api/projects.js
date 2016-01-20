@@ -9,7 +9,7 @@ export default {
     },
     'mission-impossible': {
         backgroundColor: '#00ff00',
-        title: 'Mission Impossible: Rogue Nation',
+        title: 'Mission Impossible',
         client: 'Paramount pictures',
         category: 'Official website',
     	description: 'Mission Impossible... [DESC]'
