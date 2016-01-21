@@ -1,29 +1,3 @@
-<style lang="stylus">
-.section-preloader 
-  position absolute
-  z-index 1000
-
-  .background-top,
-  .background-bottom
-    width 100%
-    height 50%
-    background-color #fff
-
-  .loading  
-    position absolute
-    z-index 1
-    top: 50%
-    width 100%
-    height 1px
-    background-color #ccc
-
-  .loading-progress
-    width 100%
-    height 100%
-    background-color #333
-    transform-origin 0 0
-</style>
-
 <template>
   <section class="section-preloader">
     <div v-el:loading class="loading">
@@ -33,6 +7,9 @@
     <div v-el:background-bottom class="background-bottom"></div>
   </section>
 </template>
+
+
+
 
 <script>
 import Animate from 'velocity-animate'
@@ -158,3 +135,32 @@ export default {
   }
 }
 </script>
+
+
+
+
+<style lang="stylus">
+.section-preloader 
+  position absolute
+  z-index 1000
+
+  .background-top,
+  .background-bottom
+    width 100%
+    height 50%
+    background-color #fff
+
+  .loading  
+    position absolute
+    z-index 1
+    top: 50%
+    width 100%
+    height 1px
+    background-color #ccc
+
+  .loading-progress
+    width 100%
+    height 100%
+    background-color #333
+    transform-origin 0 0
+</style>

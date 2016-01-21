@@ -1,10 +1,3 @@
-<style lang="stylus">
-.section-project
-  color #ff0
-  .titles
-    position absolute
-</style>
-
 <template>
   <section class="section-project">
     <component-project-details v-if="isDetailsOpen" transition='project-details'></component-project-details>
@@ -15,8 +8,10 @@
   </section>
 </template>
 
-<script>
 
+
+
+<script>
 import ComponentProjectTitle from '../components/project/Title.vue'
 import ComponentProjectNavigation from '../components/project/Navigation.vue'
 import ComponentProjectDetails from '../components/project/Details.vue'
@@ -40,15 +35,16 @@ export default {
         this.projects.push(this.$route.params.id)
 
         if(this.projects.length > 1) {
+          
           this.projects.shift();
         }
 
         Store.actions.update(this.$route.params.id)
 
-      } else {
+      } 
+      else {
 
         transition.redirect('/')
-        
       }
 
       // if navigate with history (ex: browser back button) > close about panel
@@ -67,12 +63,12 @@ export default {
   },
   attached () {
     
-    console.log('attached');
+    //
 
   },
   detached () {
 
-    console.log('detached');
+    //
 
   },
   methods: {
@@ -81,3 +77,13 @@ export default {
 }
 
 </script>
+
+
+
+
+<style lang="stylus">
+.section-project
+  color #ff0
+  .titles
+    position absolute
+</style>

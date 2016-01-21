@@ -1,35 +1,3 @@
-<style lang="stylus">
-.component-project-title
-  display flex;
-  position: relative;
-  z-index 10
-  justify-content center
-  align-items center
-  text-align center
-  color #fff
-  font-size 3em
-  perspective 600px;
-  h2, h3 
-    position relative
-    display inline-block
-    background-color #000
-  h2
-    margin-bottom 0.5em
-    font-size 1em
-    @media screen and (max-width: 40em)
-      font-size 0.6em
-  h3
-    font-size 0.5em
-    @media screen and (max-width: 40em)
-      font-size 0.4em
-  h4
-    cursor pointer
-    font-weight normal
-    font-size 0.3em
-    @media screen and (max-width: 40em)
-      font-size 0.2em    
-</style>
-
 <template>
   <span class="component-project-title">
     <span>
@@ -41,8 +9,10 @@
   </span>
 </template>
 
-<script>
 
+
+
+<script>
 import Vue from 'vue'
 import Animate from 'velocity-animate'
 import Resize from 'brindille-resize';
@@ -106,6 +76,10 @@ export default {
   }
 }
 
+/**
+========== TRANSITION - project-title
+**/
+
 Vue.transition('project-title', {
   css: false,
   enter: function(el, done) {
@@ -140,3 +114,38 @@ Vue.transition('project-title', {
   }
 })
 </script>
+
+
+
+
+<style lang="stylus">
+.component-project-title
+  display flex;
+  position: relative;
+  z-index 10
+  justify-content center
+  align-items center
+  text-align center
+  color #fff
+  font-size 3em
+  perspective 600px;
+  h2, h3 
+    position relative
+    display inline-block
+    background-color #000
+  h2
+    margin-bottom 0.5em
+    font-size 1em
+    @media screen and (max-width: 40em)
+      font-size 0.6em
+  h3
+    font-size 0.5em
+    @media screen and (max-width: 40em)
+      font-size 0.4em
+  h4
+    cursor pointer
+    font-weight normal
+    font-size 0.3em
+    @media screen and (max-width: 40em)
+      font-size 0.2em    
+</style>

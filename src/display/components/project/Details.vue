@@ -1,23 +1,12 @@
-<style lang="stylus">
-.component-project-details
-  position absolute
-  z-index 1000
-  .background
-    position absolute
-    top 0
-    z-index -1
-    width 100%
-    height 100%
-    background-color #000
-    opacity 0.4
-</style>
-
 <template>
   <aside class="component-project-details">
     [Details]
     <div v-el="background" @click="closeDetails" class="background"></div>
   </aside>
 </template>
+
+
+
 
 <script>
 import Vue from 'vue'
@@ -96,3 +85,20 @@ Vue.transition('project-details', {
 })
 
 </script>
+
+
+
+
+<style lang="stylus">
+.component-project-details
+  position absolute
+  z-index 1000
+  .background
+    position absolute
+    top 0
+    z-index -1
+    width 100%
+    height 100%
+    background-color #000
+    opacity 0.4
+</style>

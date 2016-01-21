@@ -1,13 +1,9 @@
-<style lang="stylus">
-.component-background 
-  position absolute
-  z-index -1
-  transition: background-color 1000ms linear;
-</style>
-
 <template>
   <div class="component-background" v-bind:style="{ backgroundColor: backgroundColor }"></div>
 </template>
+
+
+
 
 <script>
 import Resize from 'brindille-resize';
@@ -50,3 +46,13 @@ export default {
   }
 }
 </script>
+
+
+
+
+<style lang="stylus">
+.component-background 
+  position absolute
+  z-index -1
+  transition: background-color 1000ms linear;
+</style>

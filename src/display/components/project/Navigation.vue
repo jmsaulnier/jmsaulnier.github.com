@@ -1,25 +1,12 @@
-<style lang="stylus">
-.component-project-navigation
-  a 
-    position absolute
-    z-index 20
-    display inline-block
-    padding 0.4em
-    color #000
-    border 1px solid #000
-    cursor pointer
-  .previous
-    transform: rotate(-90deg);
-  .next 
-    transform: rotate(90deg);    
-</style>
-
 <template>
   <div class="component-project-navigation">
     <a v-el:previous class="previous" @click="navigate('previous')">Previous</a>
     <a v-el:next class="next" @click="navigate('next')">Next</a>
   </div>
 </template>
+
+
+
 
 <script>
 import Animate from 'velocity-animate'
@@ -131,3 +118,22 @@ export default {
   }
 }
 </script>
+
+
+
+
+<style lang="stylus">
+.component-project-navigation
+  a 
+    position absolute
+    z-index 20
+    display inline-block
+    padding 0.4em
+    color #000
+    border 1px solid #000
+    cursor pointer
+  .previous
+    transform: rotate(-90deg);
+  .next 
+    transform: rotate(90deg);    
+</style>

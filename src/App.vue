@@ -1,17 +1,3 @@
-<style lang="stylus">
-@require 'display/styles/normalize';
-
-font-stack = Helvetica, sans-serif
-primary-color = #42b983
-
-#app
-  font 100% font-stack
-  color primary-color
-
-.sections 
-  position absolute
-</style>
-
 <template>
   <div id="app">
     <component-footer></component-footer>
@@ -54,3 +40,17 @@ export default {
   },
 }
 </script>
+
+<style lang="stylus">
+@require 'display/styles/normalize';
+
+font-stack = Helvetica, sans-serif
+primary-color = #42b983
+
+#app
+  font 100% font-stack
+  color primary-color
+
+.sections 
+  position absolute
+</style>
