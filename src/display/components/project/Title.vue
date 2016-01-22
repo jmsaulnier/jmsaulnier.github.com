@@ -122,7 +122,6 @@ Vue.transition('project-title', {
 .component-project-title
   display flex;
   position: relative;
-  z-index 10
   justify-content center
   align-items center
   text-align center
