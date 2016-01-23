@@ -5,6 +5,9 @@
       <component-project-title v-bind:project="project"></component-project-title>
     </div>
     <component-project-navigation ></component-project-navigation>
+    <div class="sketches" v-for="project in projects" transition='project-sketch'>
+      <component-project-sketch v-bind:project="project"></component-project-sketch>
+    </div>
   </section>
 </template>
 
@@ -12,6 +15,7 @@
 
 
 <script>
+import ComponentProjectSketch from '../components/project/Sketch.vue'
 import ComponentProjectTitle from '../components/project/Title.vue'
 import ComponentProjectNavigation from '../components/project/Navigation.vue'
 import ComponentProjectDetails from '../components/project/Details.vue'
@@ -23,6 +27,7 @@ import StoreAbout from '../../store/about'
 export default {
 
   components: {
+    ComponentProjectSketch,
     ComponentProjectTitle,
     ComponentProjectNavigation,
     ComponentProjectDetails
@@ -86,4 +91,8 @@ export default {
   color #ff0
   .titles
     position absolute
+    z-index 20
+  .sketches
+    position absolute
+    z-index 10
 </style>
