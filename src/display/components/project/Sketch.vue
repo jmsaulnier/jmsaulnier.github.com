@@ -1,5 +1,5 @@
 <template>
-  <canvas class="component-project-sketch"></canvas>
+  <div class="component-project-sketch"></div>
 </template>
 
 
@@ -11,8 +11,8 @@ import Animate from 'velocity-animate'
 import Resize from 'brindille-resize';
 import Css from 'dom-css'
 
-import Projects from '../../../api/projects'
 import Store from '../../../store/project'
+import Loader from '../../sketch/project/loader'
 
 
 export default {
@@ -34,12 +34,14 @@ export default {
     this.reset();
     Resize.addListener(this.resize);
 
-    this.sketch = require('../../sketch/project/' + this.project);
+    this.sketch = Loader(this.project, this.$el);
+    this.sketch.load();
   },
   detached () {
 
     Resize.removeListener(this.resize);
 
+    this.sketch.unload();
     this.sketch = null;
 
   },
@@ -72,7 +74,7 @@ Vue.transition('project-sketch', {
   enter: function(el, done) {
 
     Animate(el, 
-      { opacity: [0.7, "easeInSine", 0] }, 
+      { opacity: [1, "easeInSine", 0] }, 
       { duration: 400, complete: () => { 
         done();
       }}
@@ -81,7 +83,7 @@ Vue.transition('project-sketch', {
   leave: function(el, done) {
 
     Animate(el, 
-      { opacity: [0, "easeInSine", 0.7] }, 
+      { opacity: [0, "easeInSine", 1] }, 
       { duration: 400 , complete: () => { 
         done();
       }}
@@ -94,5 +96,8 @@ Vue.transition('project-sketch', {
 
 
 <style lang="stylus">
-
+  .component-project-sketch
+    canvas
+      width 100%
+      height 100%
 </style>
