@@ -1,5 +1,5 @@
 <template>
-  <span class="component-project-title">
+  <span class="element-title">
     <span>
       <h2>{{title}}</h2>
       <br />
@@ -80,7 +80,7 @@ export default {
 ========== TRANSITION - project-title
 **/
 
-Vue.transition('project-title', {
+Vue.transition('section-project-element-title', {
   css: false,
   enter: function(el, done) {
 
@@ -119,32 +119,42 @@ Vue.transition('project-title', {
 
 
 <style lang="stylus">
-.component-project-title
-  display flex;
-  position: relative;
-  justify-content center
-  align-items center
-  text-align center
-  color #fff
-  font-size 3em
-  perspective 600px;
-  h2, h3 
-    position relative
-    display inline-block
-    background-color #000
-  h2
-    margin-bottom 0.5em
-    font-size 1em
-    @media screen and (max-width: 40em)
-      font-size 0.6em
-  h3
-    font-size 0.5em
-    @media screen and (max-width: 40em)
-      font-size 0.4em
-  h4
-    cursor pointer
-    font-weight normal
-    font-size 0.3em
-    @media screen and (max-width: 40em)
-      font-size 0.2em    
+
+.section-project
+  .element-title
+    display flex;
+    position: relative;
+    justify-content center
+    align-items center
+    text-align center
+    color #fff
+    font-size 3em
+    perspective 600px;
+
+    h2, h3 
+      position relative
+      display inline-block
+      background-color #000
+
+    h2
+      margin-bottom 0.5em
+      font-size 1em
+
+      @media screen and (max-width: 40em)
+        font-size 0.6em
+
+    h3
+      font-size 0.5em
+
+      @media screen and (max-width: 40em)
+        font-size 0.4em
+
+    h4
+      cursor pointer
+      font-weight normal
+      font-size 0.3em
+
+      @media screen and (max-width: 40em)
+        font-size 0.2em    
+
 </style>

@@ -71,15 +71,19 @@ export default {
 
 
 <style lang="stylus">
+@import '../styles/variables';
+
 .component-footer 
   position absolute
-  z-index 2000
+  z-index('.component-footer')
+
   .links
     width 100%
     height auto
     padding 0 0 1em 0
     text-align center
     color #000    
+    
   a
     padding 0 0 2px 0
     font-size 0.8em

@@ -1,5 +1,10 @@
 <template>
-  <div class="component-project-sketch"></div>
+  <aside class="element-details">
+    <div v-el="background" @click="closeDetails" class="background"></div>
+    <div v-el="container" class="container">
+      [Details]
+    </div>
+  </aside>
 </template>
 
 
@@ -12,41 +17,27 @@ import Resize from 'brindille-resize';
 import Css from 'dom-css'
 
 import Store from '../../../store/project'
-import Loader from '../../sketch/project/loader'
-
 
 export default {
-
-  props: {
-    project: {
-      type: String,
-      required: true
-    }
-  },
-
   data () {
     return {
-      sketch: null
+      
     }
   },
   attached () {
 
     this.reset();
+
     Resize.addListener(this.resize);
 
-    this.sketch = Loader(this.project, this.$el);
-    this.sketch.load();
   },
   detached () {
 
     Resize.removeListener(this.resize);
 
-    this.sketch.unload();
-    this.sketch = null;
-
   },
   methods: {
-    /**
+  	/**
     * reset
     */
     reset () {
@@ -61,20 +52,24 @@ export default {
 
       Css(this.$el, { width: Resize.width, height: Resize.height });
 
+    },
+    /**
+    * closeDetails
+    */
+    closeDetails () {
+
+      Store.actions.closeDetails();
+      
     }
   }
 }
 
-/**
-========== TRANSITION - project-sketch
-**/
-
-Vue.transition('project-sketch', {
+Vue.transition('section-project-element-details', {
   css: false,
   enter: function(el, done) {
 
-    Animate(el, 
-      { opacity: [1, "easeInSine", 0] }, 
+    Animate(el.querySelector('.background'), 
+      { opacity: [.4, "easeInSine", 0] }, 
       { duration: 400, complete: () => { 
         done();
       }}
@@ -82,22 +77,38 @@ Vue.transition('project-sketch', {
   },
   leave: function(el, done) {
 
-    Animate(el, 
-      { opacity: [0, "easeInSine", 1] }, 
+    Animate(el.querySelector('.background'), 
+      { opacity: [0, "easeInSine", .4] }, 
       { duration: 400 , complete: () => { 
         done();
       }}
     ); 
   }
 })
+
 </script>
 
 
 
 
 <style lang="stylus">
-  .component-project-sketch
-    canvas
+
+@import '../../styles/variables';
+
+.section-project
+  .element-details
+    position absolute
+    z-index('.section-project .element-details')
+
+    .container
+      position relative
+    
+    .background
+      position absolute
+      top 0
       width 100%
       height 100%
+      background-color #000
+      opacity 0.4
+
 </style>

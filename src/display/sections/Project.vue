@@ -1,12 +1,12 @@
 <template>
   <section class="section-project">
-    <component-project-details v-if="isDetailsOpen" transition='project-details'></component-project-details>
-    <div class="titles" v-for="project in projects" transition='project-title'>
-      <component-project-title v-bind:project="project"></component-project-title>
+    <element-details v-if="isDetailsOpen" transition='section-project-element-details'></element-details>
+    <div class="element-titles" v-for="project in projects" transition='section-project-element-title'>
+      <element-title v-bind:project="project"></element-title>
     </div>
-    <component-project-navigation ></component-project-navigation>
-    <div class="sketches" v-for="project in projects" transition='project-sketch'>
-      <component-project-sketch v-bind:project="project"></component-project-sketch>
+    <element-navigation ></element-navigation>
+    <div class="element-sketches" v-for="project in projects" transition='section-project-element-sketch'>
+      <element-sketch v-bind:project="project"></element-sketch>
     </div>
   </section>
 </template>
@@ -15,10 +15,10 @@
 
 
 <script>
-import ComponentProjectSketch from '../components/project/Sketch.vue'
-import ComponentProjectTitle from '../components/project/Title.vue'
-import ComponentProjectNavigation from '../components/project/Navigation.vue'
-import ComponentProjectDetails from '../components/project/Details.vue'
+import ElementSketch from './project/Sketch.vue'
+import ElementTitle from './project/Title.vue'
+import ElementNavigation from './project/Navigation.vue'
+import ElementDetails from './project/Details.vue'
 
 import Projects from '../../api/projects'
 import Store from '../../store/project'
@@ -27,10 +27,10 @@ import StoreAbout from '../../store/about'
 export default {
 
   components: {
-    ComponentProjectSketch,
-    ComponentProjectTitle,
-    ComponentProjectNavigation,
-    ComponentProjectDetails
+    ElementSketch,
+    ElementTitle,
+    ElementNavigation,
+    ElementDetails
   },
   route: {
     data: function (transition) {
@@ -87,12 +87,16 @@ export default {
 
 
 <style lang="stylus">
+@import '../styles/variables';
+
 .section-project
   color #ff0
-  .titles
+
+  .element-titles
     position absolute
-    z-index 20
-  .sketches
+    z-index('.section-project .element-titles')
+
+  .element-sketches
     position absolute
-    z-index 10
+    z-index('.section-project .element-sketches')
 </style>

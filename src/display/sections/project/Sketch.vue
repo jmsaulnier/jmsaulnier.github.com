@@ -1,8 +1,5 @@
 <template>
-  <aside class="component-project-details">
-    [Details]
-    <div v-el="background" @click="closeDetails" class="background"></div>
-  </aside>
+  <div class="element-sketch"></div>
 </template>
 
 
@@ -15,27 +12,41 @@ import Resize from 'brindille-resize';
 import Css from 'dom-css'
 
 import Store from '../../../store/project'
+import Loader from '../../sketch/project/loader'
+
 
 export default {
+
+  props: {
+    project: {
+      type: String,
+      required: true
+    }
+  },
+
   data () {
     return {
-      
+      sketch: null
     }
   },
   attached () {
 
     this.reset();
-
     Resize.addListener(this.resize);
 
+    this.sketch = Loader(this.project, this.$el);
+    this.sketch.load();
   },
   detached () {
 
     Resize.removeListener(this.resize);
 
+    this.sketch.unload();
+    this.sketch = null;
+
   },
   methods: {
-  	/**
+    /**
     * reset
     */
     reset () {
@@ -50,24 +61,20 @@ export default {
 
       Css(this.$el, { width: Resize.width, height: Resize.height });
 
-    },
-    /**
-    * closeDetails
-    */
-    closeDetails () {
-
-      Store.actions.closeDetails();
-      
     }
   }
 }
 
-Vue.transition('project-details', {
+/**
+========== TRANSITION - project-sketch
+**/
+
+Vue.transition('section-project-element-sketch', {
   css: false,
   enter: function(el, done) {
 
-    Animate(el.querySelector('.background'), 
-      { opacity: [.4, "easeInSine", 0] }, 
+    Animate(el, 
+      { opacity: [1, "easeInSine", 0] }, 
       { duration: 400, complete: () => { 
         done();
       }}
@@ -75,30 +82,25 @@ Vue.transition('project-details', {
   },
   leave: function(el, done) {
 
-    Animate(el.querySelector('.background'), 
-      { opacity: [0, "easeInSine", .4] }, 
+    Animate(el, 
+      { opacity: [0, "easeInSine", 1] }, 
       { duration: 400 , complete: () => { 
         done();
       }}
     ); 
   }
 })
-
 </script>
 
 
 
 
 <style lang="stylus">
-.component-project-details
-  position absolute
-  z-index 100
-  .background
-    position absolute
-    top 0
-    z-index -1
-    width 100%
-    height 100%
-    background-color #000
-    opacity 0.4
+
+.section-project
+  .element-sketch
+    canvas
+      width 100%
+      height 100%
+
 </style>

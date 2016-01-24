@@ -1,5 +1,5 @@
 <template>
-  <div class="component-project-navigation">
+  <div class="element-navigation">
     <a v-el:previous class="previous" @click="navigate('previous')">Previous</a>
     <a v-el:next class="next" @click="navigate('next')">Next</a>
   </div>
@@ -123,17 +123,24 @@ export default {
 
 
 <style lang="stylus">
-.component-project-navigation
-  a 
-    position absolute
-    z-index 20
-    display inline-block
-    padding 0.4em
-    color #000
-    border 1px solid #000
-    cursor pointer
-  .previous
-    transform: rotate(-90deg);
-  .next 
-    transform: rotate(90deg);    
+
+@import '../../styles/variables';
+
+.section-project
+  .element-navigation
+    a 
+      position absolute
+      z-index('.section-project .element-navigation')
+      display inline-block
+      padding 0.4em
+      color #000
+      border 1px solid #000
+      cursor pointer
+
+    .previous
+      transform: rotate(-90deg);
+
+    .next 
+      transform: rotate(90deg); 
+         
 </style>

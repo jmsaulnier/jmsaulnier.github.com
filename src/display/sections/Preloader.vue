@@ -140,9 +140,11 @@ export default {
 
 
 <style lang="stylus">
+@import '../styles/variables';
+
 .section-preloader 
   position absolute
-  z-index 1000
+  z-index('.section-preloader')
 
   .background-top,
   .background-bottom

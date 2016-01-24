@@ -51,8 +51,10 @@ export default {
 
 
 <style lang="stylus">
+@import '../styles/variables';
+
 .component-background 
   position absolute
-  z-index -1
+  top 0
   transition: background-color 1000ms linear;
 </style>
