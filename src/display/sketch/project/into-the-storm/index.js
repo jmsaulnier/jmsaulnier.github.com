@@ -1,21 +1,20 @@
-export default class IntoTheStorm  {
+export default class IntoTheStorm {
 
-  constructor(domElement) {
-  	
-  	this.domElement = domElement
-  	this.isLoaded = false;
+  constructor (domElement) {
+
+    this.domElement = domElement
+    this.isLoaded = false
   }
 
-  load() {
+  load () {
 
-    console.log('into-the-storm -- load');
-
-    this.isLoaded = true;
+    console.log('into-the-storm -- load')
+    this.isLoaded = true
   }
 
-  unload() {
+  unload () {
 
-    this.isLoaded = false;
-    console.log('into-the-storm -- unload');
+    this.isLoaded = false
+    console.log('into-the-storm -- unload')
   }
 }

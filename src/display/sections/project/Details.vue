@@ -13,76 +13,66 @@
 <script>
 import Vue from 'vue'
 import Animate from 'velocity-animate'
-import Resize from 'brindille-resize';
+import Resize from 'brindille-resize'
 import Css from 'dom-css'
 
 import Store from '../../../store/project'
 
 export default {
-  data () {
-    return {
-      
-    }
-  },
+
   attached () {
 
-    this.reset();
-
-    Resize.addListener(this.resize);
-
+    this.reset()
+    Resize.addListener(this.resize)
   },
   detached () {
 
-    Resize.removeListener(this.resize);
-
+    Resize.removeListener(this.resize)
   },
   methods: {
-  	/**
+    /**
     * reset
     */
     reset () {
 
-      this.resize();
-
+      this.resize()
     },
     /**
     * resize
     */
     resize () {
 
-      Css(this.$el, { width: Resize.width, height: Resize.height });
-
+      Css(this.$el, { width: Resize.width, height: Resize.height })
     },
     /**
     * closeDetails
     */
     closeDetails () {
 
-      Store.actions.closeDetails();
-      
+      Store.actions.closeDetails()
     }
   }
 }
 
 Vue.transition('section-project-element-details', {
   css: false,
-  enter: function(el, done) {
+  enter: function (el, done) {
 
-    Animate(el.querySelector('.background'), 
-      { opacity: [.4, "easeInSine", 0] }, 
-      { duration: 400, complete: () => { 
-        done();
+    Animate(el.querySelector('.background'),
+      { opacity: [0.4, 'easeInSine', 0] },
+      { duration: 400, complete: () => {
+        done()
       }}
-    ); 
+    )
   },
-  leave: function(el, done) {
+  leave: function (el, done) {
 
-    Animate(el.querySelector('.background'), 
-      { opacity: [0, "easeInSine", .4] }, 
-      { duration: 400 , complete: () => { 
-        done();
+    Animate(el.querySelector('.background'),
+      { opacity: [0, 'easeInSine', 0.4] },
+      { duration: 400, complete: () => {
+        done()
       }}
-    ); 
+    )
   }
 })
 
@@ -99,10 +89,8 @@ Vue.transition('section-project-element-details', {
   .element-details
     position absolute
     z-index('.section-project .element-details')
-
     .container
       position relative
-    
     .background
       position absolute
       top 0

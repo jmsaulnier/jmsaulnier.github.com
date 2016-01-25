@@ -8,12 +8,10 @@
 <script>
 import Vue from 'vue'
 import Animate from 'velocity-animate'
-import Resize from 'brindille-resize';
+import Resize from 'brindille-resize'
 import Css from 'dom-css'
 
-import Store from '../../../store/project'
 import Loader from '../../sketch/project/loader'
-
 
 export default {
 
@@ -31,19 +29,18 @@ export default {
   },
   attached () {
 
-    this.reset();
-    Resize.addListener(this.resize);
+    this.reset()
+    Resize.addListener(this.resize)
 
-    this.sketch = Loader(this.project, this.$el);
-    this.sketch.load();
+    this.sketch = Loader(this.project, this.$el)
+    this.sketch.load()
   },
   detached () {
 
-    Resize.removeListener(this.resize);
+    Resize.removeListener(this.resize)
 
-    this.sketch.unload();
-    this.sketch = null;
-
+    this.sketch.unload()
+    this.sketch = null
   },
   methods: {
     /**
@@ -51,16 +48,14 @@ export default {
     */
     reset () {
 
-      this.resize();
-
+      this.resize()
     },
     /**
     * resize
     */
     resize () {
 
-      Css(this.$el, { width: Resize.width, height: Resize.height });
-
+      Css(this.$el, { width: Resize.width, height: Resize.height })
     }
   }
 }
@@ -71,23 +66,23 @@ export default {
 
 Vue.transition('section-project-element-sketch', {
   css: false,
-  enter: function(el, done) {
+  enter: function (el, done) {
 
-    Animate(el, 
-      { opacity: [1, "easeInSine", 0] }, 
-      { duration: 400, complete: () => { 
-        done();
+    Animate(el,
+      { opacity: [1, 'easeInSine', 0] },
+      { duration: 400, complete: () => {
+        done()
       }}
-    ); 
+    )
   },
-  leave: function(el, done) {
+  leave: function (el, done) {
 
-    Animate(el, 
-      { opacity: [0, "easeInSine", 1] }, 
-      { duration: 400 , complete: () => { 
-        done();
+    Animate(el,
+      { opacity: [0, 'easeInSine', 1] },
+      { duration: 400, complete: () => {
+        done()
       }}
-    ); 
+    )
   }
 })
 </script>

@@ -6,18 +6,13 @@
 
 
 <script>
-import Resize from 'brindille-resize';
+import Resize from 'brindille-resize'
 import Css from 'dom-css'
 
 import Projects from '../../api/projects'
 import StoreProject from '../../store/project'
 
 export default {
-  data () {
-    return {
-      
-    }
-  },
   computed: {
     backgroundColor () {
       return Projects[StoreProject.state.project].backgroundColor
@@ -25,14 +20,13 @@ export default {
   },
   attached () {
 
-    this.resize();
-    Resize.addListener(this.resize);
+    this.resize()
+    Resize.addListener(this.resize)
 
   },
   detached () {
 
-    Resize.removeListener(this.resize);
-
+    Resize.removeListener(this.resize)
   },
   methods: {
     /**
@@ -40,8 +34,7 @@ export default {
     */
     resize () {
 
-      Css(this.$el, { width: Resize.width, height: Resize.height });
-
+      Css(this.$el, { width: Resize.width, height: Resize.height })
     }
   }
 }
@@ -53,8 +46,8 @@ export default {
 <style lang="stylus">
 @import '../styles/variables';
 
-.component-background 
+.component-background
   position absolute
   top 0
-  transition: background-color 1000ms linear;
+  transition background-color 1000ms linear
 </style>

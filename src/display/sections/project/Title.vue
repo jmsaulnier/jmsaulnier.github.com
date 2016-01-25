@@ -15,12 +15,11 @@
 <script>
 import Vue from 'vue'
 import Animate from 'velocity-animate'
-import Resize from 'brindille-resize';
+import Resize from 'brindille-resize'
 import Css from 'dom-css'
 
 import Projects from '../../../api/projects'
 import Store from '../../../store/project'
-
 
 export default {
 
@@ -30,7 +29,6 @@ export default {
       required: true
     }
   },
-
   data () {
     return {
       title: Projects[this.project].title,
@@ -39,14 +37,12 @@ export default {
   },
   attached () {
 
-    this.reset();
-    Resize.addListener(this.resize);
-
+    this.reset()
+    Resize.addListener(this.resize)
   },
   detached () {
 
-    Resize.removeListener(this.resize);
-
+    Resize.removeListener(this.resize)
   },
   methods: {
     /**
@@ -54,7 +50,7 @@ export default {
     */
     reset () {
 
-      this.resize();
+      this.resize()
 
     },
     /**
@@ -62,17 +58,15 @@ export default {
     */
     resize () {
 
-      Css(this.$el, { width: Resize.width, height: Resize.height });
-
+      Css(this.$el, { width: Resize.width, height: Resize.height })
     },
     /**
     * openDetails
     */
     openDetails () {
 
-      Store.actions.openDetails();
-      
-    },
+      Store.actions.openDetails()
+    }
   }
 }
 
@@ -82,35 +76,35 @@ export default {
 
 Vue.transition('section-project-element-title', {
   css: false,
-  enter: function(el, done) {
+  enter: function (el, done) {
 
     /*
-    Animate(el.querySelector('h2'), 
-      { rotateX: [0, "easeInSine", -30] }, 
+    Animate(el.querySelector('h2'),
+      { rotateX: [0, 'easeInSine', -30] },
       { duration: 200 }
-    ); 
+    )
     */
-    Animate(el, 
-      { opacity: [1, "easeInSine", 0], translateY: [0, "easeInSine", -Resize.height * 0.1] }, 
-      { duration: 400, complete: () => { 
-        done();
+    Animate(el,
+      { opacity: [1, 'easeInSine', 0], translateY: [0, 'easeInSine', -Resize.height * 0.1] },
+      { duration: 400, complete: () => {
+        done()
       }}
-    ); 
+    )
   },
-  leave: function(el, done) {
+  leave: function (el, done) {
 
     /*
-    Animate(el.querySelector('h2'), 
-      { rotateX: [30, "easeInSine", 0] }, 
+    Animate(el.querySelector('h2'),
+      { rotateX: [30, 'easeInSine', 0] },
       { duration: 400 }
-    ); 
+    )
     */
-    Animate(el, 
-      { opacity: [0, "easeInSine", 1], translateY: [Resize.height * 0.1, "easeInSine", 0]  }, 
-      { duration: 400 , complete: () => { 
-        done();
+    Animate(el,
+      { opacity: [0, 'easeInSine', 1], translateY: [Resize.height * 0.1, 'easeInSine', 0] },
+      { duration: 400, complete: () => {
+        done()
       }}
-    ); 
+    )
   }
 })
 </script>
@@ -130,31 +124,24 @@ Vue.transition('section-project-element-title', {
     color #fff
     font-size 3em
     perspective 600px;
-
-    h2, h3 
+    h2, h3
       position relative
       display inline-block
       background-color #000
-
     h2
       margin-bottom 0.5em
       font-size 1em
-
       @media screen and (max-width: 40em)
         font-size 0.6em
-
     h3
       font-size 0.5em
-
       @media screen and (max-width: 40em)
         font-size 0.4em
-
     h4
       cursor pointer
       font-weight normal
       font-size 0.3em
-
       @media screen and (max-width: 40em)
-        font-size 0.2em    
+        font-size 0.2em
 
 </style>

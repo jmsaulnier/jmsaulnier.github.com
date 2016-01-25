@@ -1,21 +1,20 @@
-export default class EdgeOfTomorrow  {
+export default class EdgeOfTomorrow {
 
-  constructor(domElement) {
-  	
-  	this.domElement = domElement
-  	this.isLoaded = false;
+  constructor (domElement) {
+
+    this.domElement = domElement
+    this.isLoaded = false
   }
 
-  load() {
+  load () {
 
-    console.log('edge-of-tomorrow -- load');
-
-    this.isLoaded = true;
+    console.log('edge-of-tomorrow -- load')
+    this.isLoaded = true
   }
 
-  unload() {
+  unload () {
 
-	this.isLoaded = false;
-    console.log('edge-of-tomorrow -- unload');
+    this.isLoaded = false
+    console.log('edge-of-tomorrow -- unload')
   }
 }

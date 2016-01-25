@@ -35,25 +35,23 @@ export default {
   route: {
     data: function (transition) {
 
-      if(Projects[this.$route.params.id]) {
+      if (Projects[this.$route.params.id]) {
 
         this.projects.push(this.$route.params.id)
 
-        if(this.projects.length > 1) {
-          
-          this.projects.shift();
+        if (this.projects.length > 1) {
+
+          this.projects.shift()
         }
 
         Store.actions.update(this.$route.params.id)
-
-      } 
-      else {
+      } else {
 
         transition.redirect('/')
       }
 
       // if navigate with history (ex: browser back button) > close about panel
-      StoreAbout.actions.close();
+      StoreAbout.actions.close()
     }
   },
   data () {
@@ -65,20 +63,7 @@ export default {
     isDetailsOpen () {
       return Store.state.isDetailsOpen
     }
-  },
-  attached () {
-    
-    //
-
-  },
-  detached () {
-
-    //
-
-  },
-  methods: {
-    
-  } 
+  }
 }
 
 </script>
@@ -91,11 +76,9 @@ export default {
 
 .section-project
   color #ff0
-
   .element-titles
     position absolute
     z-index('.section-project .element-titles')
-
   .element-sketches
     position absolute
     z-index('.section-project .element-sketches')
