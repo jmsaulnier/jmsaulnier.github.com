@@ -9,6 +9,8 @@ export default function loader (project, domElement) {
 
   let sketch = null
 
+  // TODO Generate modules and load with require.ensure with Webpack
+
   switch (project) {
     case 'mockingjay':
       sketch = new Mockingjay(domElement)

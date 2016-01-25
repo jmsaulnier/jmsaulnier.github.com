@@ -33,6 +33,9 @@ export default {
     Loader.on('error', this.loaderErrorHandler)
     Loader.load(Manifest)
     */
+
+    // TODO Fix preloader with Webpack
+
     this.updateLoadingProgress(1, true)
   },
   detached () {
