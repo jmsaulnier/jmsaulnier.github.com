@@ -1,22 +1,20 @@
-export default class CainesQuest  {
+export default class CainesQuest {
 
-  constructor(domElement) {
-  	
-  	this.domElement = domElement
-  	this.isLoaded = false;
+  constructor (domElement) {
+
+    this.domElement = domElement
+    this.isLoaded = false
   }
 
-  load() {
+  load () {
 
-    console.log('caines-quest -- load');
-
-    this.isLoaded = true;
+    console.log('caines-quest -- load')
+    this.isLoaded = true
   }
 
-  unload() {
+  unload () {
 
-  	this.isLoaded = false;	
-    console.log('caines-quest -- unload');
+    this.isLoaded = false
+    console.log('caines-quest -- unload')
   }
 }
-

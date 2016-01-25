@@ -24,12 +24,6 @@ export default {
     ComponentBackground
   },
 
-  data () {
-    return {
-      
-    }
-  },
-
   computed: {
     isLoaded () {
       return (StorePreloader.state.progress >= 1)
@@ -37,7 +31,7 @@ export default {
     isHidden () {
       return StorePreloader.state.isHidden
     }
-  },
+  }
 }
 </script>
 
@@ -50,7 +44,6 @@ primary-color = #42b983
 #app
   font 100% font-stack
   color primary-color
-
-.sections 
+.sections
   position absolute
 </style>
