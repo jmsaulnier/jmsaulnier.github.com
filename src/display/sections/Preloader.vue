@@ -13,11 +13,10 @@
 
 <script>
 import Animate from 'velocity-animate'
-import Loader from 'brindille-preloader'
+import Loader from 'preloader'
 import Resize from 'brindille-resize'
 import Css from 'dom-css'
 import Store from '../../store/preloader'
-// import Manifest from '../../manifest'
 
 export default {
 
@@ -27,16 +26,14 @@ export default {
     this.show()
 
     Resize.addListener(this.resize)
-    /*
-    Loader.on('progress', this.loaderProgressHandler)
-    Loader.on('complete', this.loaderCompleteHandler)
-    Loader.on('error', this.loaderErrorHandler)
-    Loader.load(Manifest)
-    */
 
-    // TODO Fix preloader with Webpack
+    this.loader = new Loader()
 
-    this.updateLoadingProgress(1, true)
+    this.loader.addImage('assets/images/yeoman.png')
+
+    this.loader.onProgress.add(this.loaderProgressHandler)
+    this.loader.onComplete.addOnce(this.loaderCompleteHandler)
+    this.loader.load()
   },
   detached () {
 
@@ -91,18 +88,17 @@ export default {
     /**
     * loaderProgressHandler
     */
-    loaderProgressHandler (event) {
+    loaderProgressHandler (progress) {
 
-      this.updateLoadingProgress(event.completedCount / event.totalCount)
+      this.updateLoadingProgress(progress)
     },
     /**
     * loaderCompleteHandler
     */
     loaderCompleteHandler () {
 
-      Loader.off('progress', this.loaderProgressHandler)
-      Loader.off('complete', this.loaderCompleteHandler)
-      Loader.off('error', this.loaderErrorHandler)
+      this.loader.onProgress.remove(this.loaderProgressHandler)
+      this.loader = null
 
       this.updateLoadingProgress(1, true)
     },
