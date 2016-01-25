@@ -1,7 +1,7 @@
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
-var config = require('./webpack.dev.conf')
+var config = require('./build/webpack.dev.conf')
 
 var app = express()
 var compiler = webpack(config)
@@ -15,14 +15,16 @@ app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath
 }))
 
+app.use(express.static(__dirname + '/'));
+
 // enable hot-reload and state-preserving
 // compilation error display
 app.use(require('webpack-hot-middleware')(compiler))
 
-app.listen(8080, 'localhost', function(err) {
+app.listen(8080, '0.0.0.0', function(err) {
   if (err) {
     console.log(err)
     return
   }
-  console.log('Listening at http://localhost:8080')
+  console.log('Listening to port:8080')
 })
