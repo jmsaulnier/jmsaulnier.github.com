@@ -17,7 +17,7 @@ import Loader from 'brindille-preloader'
 import Resize from 'brindille-resize'
 import Css from 'dom-css'
 import Store from '../../store/preloader'
-import Manifest from '../../manifest'
+// import Manifest from '../../manifest'
 
 export default {
 
@@ -27,11 +27,13 @@ export default {
     this.show()
 
     Resize.addListener(this.resize)
-
+    /*
     Loader.on('progress', this.loaderProgressHandler)
     Loader.on('complete', this.loaderCompleteHandler)
     Loader.on('error', this.loaderErrorHandler)
     Loader.load(Manifest)
+    */
+    this.updateLoadingProgress(1, true)
   },
   detached () {
 
