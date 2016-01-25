@@ -14,36 +14,33 @@
 <script>
 import Animate from 'velocity-animate'
 import Loader from 'brindille-preloader'
-import Resize from 'brindille-resize';
+import Resize from 'brindille-resize'
 import Css from 'dom-css'
 import Store from '../../store/preloader'
-import Manifest from '../../manifest'
+// import Manifest from '../../manifest'
 
 export default {
 
-  data () {
-
-    return {
-      
-    }
-  },
   attached () {
-    
-    this.reset();
-    this.show();
-    
-    Resize.addListener(this.resize);
 
-    Loader.on('progress', this.loaderProgressHandler);
-    Loader.on('complete', this.loaderCompleteHandler);
-    Loader.on('error', this.loaderErrorHandler);
-    Loader.load(Manifest);
+    this.reset()
+    this.show()
 
+    Resize.addListener(this.resize)
+    /*
+    Loader.on('progress', this.loaderProgressHandler)
+    Loader.on('complete', this.loaderCompleteHandler)
+    Loader.on('error', this.loaderErrorHandler)
+    Loader.load(Manifest)
+    */
+
+    // TODO Fix preloader with Webpack
+
+    this.updateLoadingProgress(1, true)
   },
   detached () {
 
-    Resize.removeListener(this.resize);
-
+    Resize.removeListener(this.resize)
   },
   methods: {
     /**
@@ -51,66 +48,63 @@ export default {
     */
     reset () {
 
-      this.resize();
+      this.resize()
 
       Animate(this.$els.loadingProgress,
-        { scaleX: 0 }, 
+        { scaleX: 0 },
         { duration: 0 }
-      );
-
+      )
     },
     /**
     * resize
     */
     resize () {
 
-      Css(this.$el, { width: Resize.width, height: Resize.height });
-
+      Css(this.$el, { width: Resize.width, height: Resize.height })
     },
     /**
     * show
     */
     show () {
 
-      Animate(this.$els.loading, 
-        { opacity: [1, 0] }, 
+      Animate(this.$els.loading,
+        { opacity: [1, 0] },
         { duration: 200 }
-      ); 
-
+      )
     },
     /**
     * updateProgress
     */
     updateLoadingProgress (progress, isComplete = false) {
 
-      Store.actions.progressUpdate(progress);    
-      
-      Animate(this.$els.loadingProgress,
-        { scaleX: progress }, 
-        { duration: 400, easing: 'easeInOutExpo', queue: false, complete: () => { 
-          if(isComplete)
-            this.hide() 
-        } }
-      );
+      Store.actions.progressUpdate(progress)
 
+      Animate(this.$els.loadingProgress,
+        { scaleX: progress },
+        { duration: 400, easing: 'easeInOutExpo', queue: false, complete: () => {
+          if (isComplete) {
+            this.hide()
+          }
+        }}
+      )
     },
     /**
     * loaderProgressHandler
     */
     loaderProgressHandler (event) {
 
-      this.updateLoadingProgress(event.completedCount / event.totalCount);
+      this.updateLoadingProgress(event.completedCount / event.totalCount)
     },
     /**
     * loaderCompleteHandler
     */
     loaderCompleteHandler () {
 
-      Loader.off('progress', this.loaderProgressHandler);
-      Loader.off('complete', this.loaderCompleteHandler);
-      Loader.off('error', this.loaderErrorHandler);
+      Loader.off('progress', this.loaderProgressHandler)
+      Loader.off('complete', this.loaderCompleteHandler)
+      Loader.off('error', this.loaderErrorHandler)
 
-      this.updateLoadingProgress(1, true);
+      this.updateLoadingProgress(1, true)
     },
     /**
     * hide
@@ -118,19 +112,19 @@ export default {
     hide () {
 
       Animate(this.$els.loading,
-        { opacity: 0 }, 
+        { opacity: 0 },
         { duration: 0, delay: 100}
-      );
+      )
 
       Animate(this.$els.backgroundBottom,
-        { translateY: '100%' }, 
+        { translateY: '100%' },
         { duration: 1000, delay: 100, easing: 'easeInOutCubic' }
-      );
+      )
 
       Animate(this.$els.backgroundTop,
-        { translateY: '-100%' }, 
+        { translateY: '-100%' },
         { duration: 1000, delay: 100, easing: 'easeInOutCubic', complete: () => { Store.actions.hide() } }
-      );
+      )
     }
   }
 }
@@ -140,24 +134,23 @@ export default {
 
 
 <style lang="stylus">
-.section-preloader 
-  position absolute
-  z-index 1000
+@import '../styles/variables';
 
+.section-preloader
+  position absolute
+  z-index('.section-preloader')
   .background-top,
   .background-bottom
     width 100%
     height 50%
     background-color #fff
-
-  .loading  
+  .loading
     position absolute
     z-index 1
     top: 50%
     width 100%
     height 1px
     background-color #ccc
-
   .loading-progress
     width 100%
     height 100%

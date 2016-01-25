@@ -2,8 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import { configRouter as ConfigRouter } from './core/routes'
-require('es6-promise').polyfill()
-
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -14,7 +12,7 @@ const router = new VueRouter({
 })
 
 ConfigRouter(router)
- 
+
 const App = Vue.extend(require('./App.vue'))
 router.start(App, '#app')
 

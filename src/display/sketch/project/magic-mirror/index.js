@@ -1,21 +1,20 @@
-export default class MagicMirror  {
+export default class MagicMirror {
 
-  constructor(domElement) {
-  	
-  	this.domElement = domElement
-  	this.isLoaded = false;
+  constructor (domElement) {
+
+    this.domElement = domElement
+    this.isLoaded = false
   }
 
-  load() {
+  load () {
 
-    console.log('magic-mirror -- load');
-
-    this.isLoaded = true;
+    console.log('magic-mirror -- load')
+    this.isLoaded = true
   }
 
-  unload() {
+  unload () {
 
-  	this.isLoaded = false;
-    console.log('magic-mirror -- unload');
+    this.isLoaded = false
+    console.log('magic-mirror -- unload')
   }
 }
