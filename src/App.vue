@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <component-footer></component-footer>
     <section-preloader v-if="!isHidden"></section-preloader>
     <section-about></section-about>
     <router-view class="sections" v-if="isLoaded"></router-view>
@@ -9,7 +8,6 @@
 </template>
 
 <script>
-import ComponentFooter from './display/components/Footer.vue'
 import ComponentBackground from './display/components/Background.vue'
 import SectionPreloader from './display/sections/Preloader.vue'
 import SectionAbout from './display/sections/About.vue'
@@ -18,7 +16,6 @@ import StorePreloader from './store/preloader'
 
 export default {
   components: {
-    ComponentFooter,
     SectionPreloader,
     SectionAbout,
     ComponentBackground

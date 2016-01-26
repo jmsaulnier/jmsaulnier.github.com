@@ -9,13 +9,13 @@
 import Resize from 'brindille-resize'
 import Css from 'dom-css'
 
-import Projects from '../../api/projects'
+import { data } from '../../api/projects'
 import StoreProject from '../../store/project'
 
 export default {
   computed: {
     backgroundColor () {
-      return Projects[StoreProject.state.project].backgroundColor
+      return data[StoreProject.state.project].backgroundColor
     }
   },
   attached () {

@@ -1,10 +1,15 @@
 <template>
   <span class="element-title">
     <span>
-      <h2>{{title}}</h2>
-      <br />
-      <h3>{{category}}</h3>
-      <h4><a @click="openDetails">View details</a></h4>
+      <h2><a @click="openDetails">{{title}}</a></h2>
+      <div class="details">
+        <div class="background"></div>
+        <div v-if="isDetailsOpen" class="container">
+          Details
+          <a @click="closeDetails">- CLOSE</a></h3>
+        </div>
+      </div>
+      <h3><a @click="openDetails">{{category}}</a></h3>
     </div>
   </span>
 </template>
@@ -18,7 +23,7 @@ import Animate from 'velocity-animate'
 import Resize from 'brindille-resize'
 import Css from 'dom-css'
 
-import Projects from '../../../api/projects'
+import { data } from '../../../api/projects'
 import Store from '../../../store/project'
 
 export default {
@@ -29,10 +34,15 @@ export default {
       required: true
     }
   },
+  computed: {
+    isDetailsOpen () {
+      return Store.state.isDetailsOpen
+    }
+  },
   data () {
     return {
-      title: Projects[this.project].title,
-      category: Projects[this.project].category
+      title: data[this.project].title,
+      category: data[this.project].category
     }
   },
   attached () {
@@ -66,6 +76,13 @@ export default {
     openDetails () {
 
       Store.actions.openDetails()
+    },
+    /**
+    * closeDetails
+    */
+    closeDetails () {
+
+      Store.actions.closeDetails()
     }
   }
 }
@@ -143,5 +160,8 @@ Vue.transition('section-project-element-title', {
       font-size 0.3em
       @media screen and (max-width: 40em)
         font-size 0.2em
-
+    .details
+      background-color #fff
+      .container
+        opacity 0
 </style>

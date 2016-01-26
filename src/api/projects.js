@@ -1,7 +1,7 @@
-export default {
+export const data = {
 
   'mockingjay': {
-    backgroundColor: '#ff0000',
+    backgroundColor: '#c3cca6',
     title: 'Mockingjay - Part II',
     client: 'Lionsgate',
     category: 'Interactive poster creator',
@@ -43,3 +43,45 @@ export default {
     description: 'Edge of Tomorrow... [DESC]'
   }
 }
+/**
+ * [getProject description]
+ * @param  {[type]} index [description]
+ * @return {[type]}       [description]
+ */
+export function getProject (index) {
+  var i = 0
+  var project = ''
+
+  if (index > Object.keys(data).length) {
+    index = 0
+  }
+
+  if (index < 0) {
+    index = Object.keys(data).length - 1
+  }
+
+  Object.keys(data).forEach(function (key) {
+    if (index === i) { project = key }
+    i++
+  })
+
+  return project
+}
+/**
+ * [getIndex description]
+ * @param  {[type]} project [description]
+ * @return {[type]}         [description]
+ */
+export function getIndex (project) {
+
+  var i = 0
+  var index = 0
+
+  Object.keys(data).forEach(function (key) {
+    if (project === key) { index = i }
+    i++
+  })
+
+  return index
+}
+
