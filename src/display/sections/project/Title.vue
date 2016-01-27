@@ -1,14 +1,8 @@
 <template>
   <span class="element-title">
-    <span>
+    <div v-el:container class="container">
       <h2><a @click="openDetails">{{title}}</a></h2>
-      <div class="details">
-        <div class="background"></div>
-        <div v-if="isDetailsOpen" class="container">
-          Details
-          <a @click="closeDetails">- CLOSE</a></h3>
-        </div>
-      </div>
+      <div class="line"></div>
       <h3><a @click="openDetails">{{category}}</a></h3>
     </div>
   </span>
@@ -68,7 +62,10 @@ export default {
     */
     resize () {
 
-      Css(this.$el, { width: Resize.width, height: Resize.height })
+      Css(this.$els.container, {
+        top: (Resize.height - this.$els.container.offsetHeight) * 0.5 + Resize.height * 0.2,
+        left: (Resize.width - this.$els.container.offsetWidth) * 0.5
+      })
     },
     /**
     * openDetails
@@ -141,16 +138,19 @@ Vue.transition('section-project-element-title', {
     color #fff
     font-size 3em
     perspective 600px;
+    .container
+      position absolute
     h2, h3
       position relative
       display inline-block
-      background-color #000
+      white-space nowrap
     h2
-      margin-bottom 0.5em
+      margin-bottom 0.3em
       font-size 1em
       @media screen and (max-width: 40em)
         font-size 0.6em
     h3
+      margin-top 0.6em
       font-size 0.5em
       @media screen and (max-width: 40em)
         font-size 0.4em
@@ -160,8 +160,7 @@ Vue.transition('section-project-element-title', {
       font-size 0.3em
       @media screen and (max-width: 40em)
         font-size 0.2em
-    .details
+    .line
       background-color #fff
-      .container
-        opacity 0
+      height 10px
 </style>

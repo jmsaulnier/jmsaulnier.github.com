@@ -1,35 +1,35 @@
 export const data = {
 
   'mockingjay': {
-    backgroundColor: '#c3cca6',
+    backgroundColor: '#630b0c',
     title: 'Mockingjay - Part II',
     client: 'Lionsgate',
     category: 'Interactive poster creator',
     description: 'Mockingjay...'
   },
   'mission-impossible': {
-    backgroundColor: '#00ff00',
+    backgroundColor: '#c21a1a',
     title: 'Mission Impossible',
     client: 'Paramount pictures',
     category: 'Official website',
     description: 'Mission Impossible... [DESC]'
   },
   'into-the-storm': {
-    backgroundColor: '#0000ff',
+    backgroundColor: '#006cff',
     title: 'Go #IntoTheStorm',
     client: 'Warner Bros.',
     category: 'Oculus Rift 4D Experience',
     description: 'Into The Storm... [DESC]'
   },
   'magic-mirror': {
-    backgroundColor: '#ff00ff',
+    backgroundColor: '#ffde00',
     title: 'Magic Mirror',
     client: 'Porsche',
     category: 'Live vehicle transformation',
     description: 'Porsche... [DESC]'
   },
   'caines-quest': {
-    backgroundColor: '#ffff00',
+    backgroundColor: '#756d39',
     title: "Caine's quest",
     client: 'Warner Bros.',
     category: 'First-person WebGL game',

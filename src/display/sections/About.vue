@@ -51,8 +51,8 @@ export default {
     resize () {
 
       Css(this.$els.content, { width: Resize.width, height: Resize.height })
-      Css(this.$els.openButton, { top: Resize.width * 0.02 })
-      Css(this.$els.closeButton, { top: Resize.width * 0.02 })
+      Css(this.$els.openButton, { top: 35 })
+      Css(this.$els.closeButton, { top: 35 })
     },
     /**
     * open
