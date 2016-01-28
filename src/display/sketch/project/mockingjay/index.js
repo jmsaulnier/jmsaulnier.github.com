@@ -1,3 +1,5 @@
+import Particles from './Particles'
+
 export default class Mockingjay {
 
   constructor (domElement) {
@@ -10,10 +12,16 @@ export default class Mockingjay {
 
     console.log('mockingjay -- load')
     this.isLoaded = true
+
+    this.particles = new Particles(this.domElement, {
+      gap: 0,
+      size: 2
+    })
   }
 
   unload () {
 
+    this.particles = null
     this.isLoaded = false
     console.log('mockingjay -- unload')
   }
