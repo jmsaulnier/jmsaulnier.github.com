@@ -10,8 +10,9 @@ import Resize from 'brindille-resize'
 import Css from 'dom-css'
 
 import Sketch from '../../3d/project'
-import ModelTarget from '../../3d/project/ModelTarget'
-import ImageTarget from '../../3d/project/ImageTarget'
+
+import Store from '../../../store/project'
+import { data, getIndex } from '../../../api/projects'
 
 export default {
 
@@ -20,46 +21,29 @@ export default {
       sketch: null
     }
   },
+  computed: {
+    projectIndex () {
+      return getIndex(Store.state.project)
+    }
+  },
   attached () {
 
     this.reset()
     Resize.addListener(this.resize)
 
-    const targetData = [
-      {
-        type: ModelTarget,
-        url: 'assets/images/projects/helmet.json',
-        options: {
-          color: {
-            r: 1,
-            g: 1,
-            b: 1
-          },
-          scale: 80,
-          size: 1,
-          respondsToMouse: true
-        }
-      },
-      {
-        type: ImageTarget,
-        url: 'assets/images/projects/griffin.png',
-        options: {
-          size: 3,
-          respondsToMouse: true
-        }
-      },
-      {
-        type: ImageTarget,
-        url: 'assets/images/projects/Mockingjay-logo.png',
-        options: {
-          size: 2,
-          respondsToMouse: true
-        }
-      }
-    ]
+    var targetData = []
+    Object.keys(data).forEach(function (key) {
+      targetData.push(data[key].sketch)
+    })
 
     this.sketch = new Sketch(this.$el, targetData)
-    this.sketch.load()
+    this.sketch.load(getIndex(Store.state.project))
+
+    this.$watch('projectIndex', function (value) {
+      if (this.sketch !== null) {
+        this.sketch.setTarget(this.projectIndex)
+      }
+    })
   },
   detached () {
 

@@ -1,4 +1,5 @@
 import THREE from 'three'
+import Resize from 'brindille-resize'
 
 import ModelTarget from './ModelTarget'
 import ImageTarget from './ImageTarget'
@@ -37,7 +38,7 @@ export default class Sketch {
     }
   }
 
-  load () {
+  load (index) {
 
     this.scene = new THREE.Scene()
 
@@ -53,19 +54,15 @@ export default class Sketch {
     document.addEventListener('mousemove', this.onMouseMove.bind(this))
 
     this.setup(() => {
-      this.setTarget(0)
+      this.setTarget(index)
        // this.startSlideshow()
     })
-
-    console.log('into-the-storm -- load')
   }
 
   unload () {
 
-    console.log('into-the-storm -- unload')
-
     this.stop()
-    window.removeEventListener('resize', this.resize.bind(this))
+    Resize.removeListener(this.resize.bind(this))
     document.removeEventListener('mousemove', this.onMouseMove.bind(this))
 
     var start = this.scene.children.length - 1
@@ -250,7 +247,7 @@ export default class Sketch {
   onTargetsReady () {
 
     this.setupPool()
-    window.addEventListener('resize', this.resize.bind(this))
+    Resize.addListener(this.resize.bind(this))
     this.animate()
 
     if (typeof this.onAssetsLoad === 'function') {

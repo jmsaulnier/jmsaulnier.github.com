@@ -1,3 +1,6 @@
+import ModelTarget from '../display/3d/project/ModelTarget'
+import ImageTarget from '../display/3d/project/ImageTarget'
+
 export const data = {
 
   'mockingjay': {
@@ -5,42 +8,102 @@ export const data = {
     title: 'Mockingjay - Part II',
     client: 'Lionsgate',
     category: 'Interactive poster creator',
-    description: 'Mockingjay...'
+    description: 'Mockingjay...',
+    sketch: {
+      type: ModelTarget,
+      url: 'assets/images/projects/helmet.json',
+      options: {
+        color: {
+          r: 1,
+          g: 1,
+          b: 1
+        },
+        scale: 80,
+        size: 1,
+        respondsToMouse: true
+      }
+    }
   },
   'mission-impossible': {
     backgroundColor: '#c21a1a',
     title: 'Mission Impossible',
     client: 'Paramount pictures',
     category: 'Official website',
-    description: 'Mission Impossible... [DESC]'
+    description: 'Mission Impossible... [DESC]',
+    sketch: {
+      type: ImageTarget,
+      url: 'assets/images/projects/griffin.png',
+      options: {
+        size: 3,
+        respondsToMouse: true
+      }
+    }
   },
   'into-the-storm': {
     backgroundColor: '#006cff',
     title: 'Go #IntoTheStorm',
     client: 'Warner Bros.',
     category: 'Oculus Rift 4D Experience',
-    description: 'Into The Storm... [DESC]'
+    description: 'Into The Storm... [DESC]',
+    sketch: {
+      type: ImageTarget,
+      url: 'assets/images/projects/Mockingjay-logo.png',
+      options: {
+        size: 2,
+        respondsToMouse: true
+      }
+    }
   },
   'magic-mirror': {
     backgroundColor: '#ffde00',
     title: 'Magic Mirror',
     client: 'Porsche',
     category: 'Live vehicle transformation',
-    description: 'Porsche... [DESC]'
+    description: 'Porsche... [DESC]',
+    sketch: {
+      type: ModelTarget,
+      url: 'assets/images/projects/helmet.json',
+      options: {
+        color: {
+          r: 1,
+          g: 1,
+          b: 1
+        },
+        scale: 80,
+        size: 1,
+        respondsToMouse: true
+      }
+    }
   },
   'caines-quest': {
     backgroundColor: '#756d39',
     title: "Caine's quest",
     client: 'Warner Bros.',
     category: 'First-person WebGL game',
-    description: 'Jupiter Ascending... [DESC]'
+    description: 'Jupiter Ascending... [DESC]',
+    sketch: {
+      type: ImageTarget,
+      url: 'assets/images/projects/griffin.png',
+      options: {
+        size: 3,
+        respondsToMouse: true
+      }
+    }
   },
   'edge-of-tomorrow': {
     backgroundColor: '#000000',
     title: 'Edge of Tomorrow',
     client: 'Warner Bros.',
     category: 'Motion poster creator',
-    description: 'Edge of Tomorrow... [DESC]'
+    description: 'Edge of Tomorrow... [DESC]',
+    sketch: {
+      type: ImageTarget,
+      url: 'assets/images/projects/Mockingjay-logo.png',
+      options: {
+        size: 2,
+        respondsToMouse: true
+      }
+    }
   }
 }
 /**
