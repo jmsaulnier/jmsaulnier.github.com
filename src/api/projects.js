@@ -10,16 +10,10 @@ export const data = {
     category: 'Interactive poster creator',
     description: 'Mockingjay...',
     sketch: {
-      type: ModelTarget,
-      url: 'assets/images/projects/helmet.json',
+      type: ImageTarget,
+      url: 'assets/images/projects/mockingjay.png',
       options: {
-        color: {
-          r: 1,
-          g: 1,
-          b: 1
-        },
-        scale: 80,
-        size: 1,
+        size: 3,
         respondsToMouse: true
       }
     }
@@ -32,7 +26,7 @@ export const data = {
     description: 'Mission Impossible... [DESC]',
     sketch: {
       type: ImageTarget,
-      url: 'assets/images/projects/griffin.png',
+      url: 'assets/images/projects/mission-impossible.png',
       options: {
         size: 3,
         respondsToMouse: true
@@ -47,9 +41,9 @@ export const data = {
     description: 'Into The Storm... [DESC]',
     sketch: {
       type: ImageTarget,
-      url: 'assets/images/projects/Mockingjay-logo.png',
+      url: 'assets/images/projects/into-the-storm.png',
       options: {
-        size: 2,
+        size: 3,
         respondsToMouse: true
       }
     }
@@ -62,7 +56,7 @@ export const data = {
     description: 'Porsche... [DESC]',
     sketch: {
       type: ModelTarget,
-      url: 'assets/images/projects/helmet.json',
+      url: 'assets/images/projects/porsche-cayman.json',
       options: {
         color: {
           r: 1,
@@ -83,7 +77,7 @@ export const data = {
     description: 'Jupiter Ascending... [DESC]',
     sketch: {
       type: ImageTarget,
-      url: 'assets/images/projects/griffin.png',
+      url: 'assets/images/projects/caines-quest.png',
       options: {
         size: 3,
         respondsToMouse: true
@@ -98,7 +92,7 @@ export const data = {
     description: 'Edge of Tomorrow... [DESC]',
     sketch: {
       type: ImageTarget,
-      url: 'assets/images/projects/Mockingjay-logo.png',
+      url: 'assets/images/projects/edge-of-tomorrow.png',
       options: {
         size: 2,
         respondsToMouse: true

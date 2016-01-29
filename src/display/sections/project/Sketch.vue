@@ -65,7 +65,7 @@ export default {
     */
     resize () {
 
-      Css(this.$el, { width: Resize.width, height: Resize.height * 0.6})
+      Css(this.$el, { width: Resize.width, height: Resize.height * 0.75})
     }
   }
 }

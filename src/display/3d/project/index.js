@@ -26,10 +26,10 @@ export default class Sketch {
     this.onAssetsLoad = null
     this.opts = {
       fov: 45,
-      maxMouseRotation: Math.PI / 4,
+      maxMouseRotation: Math.PI / 6,
       mouseRotationFriction: 0.2,
       numFloatingParticles: 40,
-      numParticles: 20000,
+      numParticles: 24000,
       particleRevertDelay: 0.01,
       revertDuration: 800,
       sizeAttenuation: true,
