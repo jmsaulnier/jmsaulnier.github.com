@@ -58,7 +58,7 @@ export default {
       width 35px
       height 1px
       margin-bottom 0.35em
-      background-color #fff
+      background-color $color-link
       transform-origin -100% 0
     .title
       position absolute

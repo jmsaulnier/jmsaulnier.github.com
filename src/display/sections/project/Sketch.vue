@@ -27,24 +27,16 @@ export default {
 
     const targetData = [
       {
-        type: ImageTarget,
-        url: 'assets/images/projects/Mockingjay-logo.png',
-        options: {
-          size: 2,
-          respondsToMouse: true
-        }
-      },
-      {
         type: ModelTarget,
         url: 'assets/images/projects/helmet.json',
         options: {
           color: {
-            r: 0.8,
+            r: 1,
             g: 1,
             b: 1
           },
           scale: 80,
-          size: 3,
+          size: 1,
           respondsToMouse: true
         }
       },
@@ -53,6 +45,14 @@ export default {
         url: 'assets/images/projects/griffin.png',
         options: {
           size: 3,
+          respondsToMouse: true
+        }
+      },
+      {
+        type: ImageTarget,
+        url: 'assets/images/projects/Mockingjay-logo.png',
+        options: {
+          size: 2,
           respondsToMouse: true
         }
       }
@@ -81,7 +81,7 @@ export default {
     */
     resize () {
 
-      Css(this.$el, { width: Resize.width, height: Resize.height})
+      Css(this.$el, { width: Resize.width, height: Resize.height * 0.6})
     }
   }
 }

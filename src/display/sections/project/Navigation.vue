@@ -96,12 +96,13 @@ export default {
 .section-project
   .element-navigation
     text-align center
+    font-family $font-link
     a
       position absolute
       z-index('.section-project .element-navigation')
       display inline-block
       font-size 0.6em
-      color #fff
+      color $color-link
       cursor pointer
       text-transform uppercase
       white-space nowrap
@@ -109,7 +110,7 @@ export default {
       display inline-block
       width 35px
       height 1px
-      background-color #fff
+      background-color $color-link
       transform-origin -100% 0
     .label-next
       display inline-block
@@ -127,6 +128,6 @@ export default {
       display inline-block
       width 1px
       height 35px
-      background-color #fff
+      background-color $color-link
       transform-origin -100% 0
 </style>

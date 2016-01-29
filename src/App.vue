@@ -49,18 +49,15 @@ export default {
 </script>
 
 <style lang="stylus">
-@require 'display/styles/normalize';
-
-font-stack = Helvetica, sans-serif
-primary-color = #42b983
+@require 'display/styles/normalize'
+@import 'display/styles/variables'
 
 #app
-  font 100% font-stack
-  color primary-color
+  font 100% $font-content
 .component-sections
   position absolute
 .component-background
   position absolute
   top 0
-  background-color #222
+  background-color $color-background
 </style>

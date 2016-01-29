@@ -140,26 +140,24 @@ Vue.transition('section-project-element-title', {
     perspective 600px;
     .container
       position absolute
-    h2, h3
-      position relative
-      display inline-block
-      white-space nowrap
     h2
+      display inline-block
+      position relative
+      white-space nowrap
       margin-bottom 0.3em
       font-size 1em
+      font-style italic
+      font-weight 700
       @media screen and (max-width: 40em)
         font-size 0.6em
     h3
-      margin-top 0.6em
-      font-size 0.5em
-      @media screen and (max-width: 40em)
-        font-size 0.4em
-    h4
-      cursor pointer
+      display block
+      margin-top 0.5em
+      font-size 0.4em
       font-weight normal
-      font-size 0.3em
+      letter-spacing 0.05em
       @media screen and (max-width: 40em)
-        font-size 0.2em
+        font-size 0.3em
     .line
       background-color #ddd
       height 10px

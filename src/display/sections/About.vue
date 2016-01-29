@@ -162,7 +162,8 @@ Vue.transition('section-about-close-button', {
 .section-about
   position absolute
   z-index('.section-about')
-  color #fff
+  color $color-link
+  font-family $font-link
   .open-button,
   .close-button
     display inline-block
@@ -179,7 +180,7 @@ Vue.transition('section-about-close-button', {
       width 35px
       height 1px
       margin-bottom 0.35em
-      background-color #fff
+      background-color $color-link
       transform-origin -100% 0
   .close-button
     right 0
