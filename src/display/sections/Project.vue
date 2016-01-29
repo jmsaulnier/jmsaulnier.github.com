@@ -4,7 +4,7 @@
       <element-title v-bind:project="project"></element-title>
     </div>
     <element-navigation></element-navigation>
-    <div class="element-sketches" v-for="project in projects" transition='section-project-element-sketch'>
+    <div class="element-sketches">
       <element-sketch v-bind:project="project"></element-sketch>
     </div>
   </section>

@@ -11,13 +11,6 @@ export default class ModelTarget extends AbstractTarget {
 
     this.targetData = targetData
 
-    /**
-    this.load = this.load.bind(this)
-    this.onLoad = this.onLoad.bind(this)
-    this.processGeometry = this.processGeometry.bind(this)
-    this.getParticles = this.getParticles.bind(this)
-    **/
-
     this.particles
     this.container = this.targetData.container
 

@@ -6,21 +6,14 @@
 
 
 <script>
-import Vue from 'vue'
-import Animate from 'velocity-animate'
 import Resize from 'brindille-resize'
 import Css from 'dom-css'
 
-import Loader from '../../sketch/project/loader'
+import Sketch from '../../3d/project'
+import ModelTarget from '../../3d/project/ModelTarget'
+import ImageTarget from '../../3d/project/ImageTarget'
 
 export default {
-
-  props: {
-    project: {
-      type: String,
-      required: true
-    }
-  },
 
   data () {
     return {
@@ -32,7 +25,40 @@ export default {
     this.reset()
     Resize.addListener(this.resize)
 
-    this.sketch = Loader(this.project, this.$el)
+    const targetData = [
+      {
+        type: ImageTarget,
+        url: 'assets/images/projects/Mockingjay-logo.png',
+        options: {
+          size: 2,
+          respondsToMouse: true
+        }
+      },
+      {
+        type: ModelTarget,
+        url: 'assets/images/projects/helmet.json',
+        options: {
+          color: {
+            r: 0.8,
+            g: 1,
+            b: 1
+          },
+          scale: 80,
+          size: 3,
+          respondsToMouse: true
+        }
+      },
+      {
+        type: ImageTarget,
+        url: 'assets/images/projects/griffin.png',
+        options: {
+          size: 3,
+          respondsToMouse: true
+        }
+      }
+    ]
+
+    this.sketch = new Sketch(this.$el, targetData)
     this.sketch.load()
   },
   detached () {
@@ -55,38 +81,12 @@ export default {
     */
     resize () {
 
-      Css(this.$el, { width: Resize.width, height: Resize.height * 0.6 })
+      Css(this.$el, { width: Resize.width, height: Resize.height})
     }
   }
 }
 
-/**
-========== TRANSITION - project-sketch
-**/
-
-Vue.transition('section-project-element-sketch', {
-  css: false,
-  enter: function (el, done) {
-
-    Animate(el,
-      { opacity: [1, 'easeInSine', 0] },
-      { duration: 400, complete: () => {
-        done()
-      }}
-    )
-  },
-  leave: function (el, done) {
-
-    Animate(el,
-      { opacity: [0, 'easeInSine', 1] },
-      { duration: 400, complete: () => {
-        done()
-      }}
-    )
-  }
-})
 </script>
-
 
 
 

@@ -63,7 +63,7 @@ export default {
     resize () {
 
       Css(this.$els.container, {
-        top: (Resize.height - this.$els.container.offsetHeight) * 0.5 + Resize.height * 0.2,
+        top: (Resize.height - this.$els.container.offsetHeight) * 0.5 + Resize.height * 0.25,
         left: (Resize.width - this.$els.container.offsetWidth) * 0.5
       })
     },
@@ -135,7 +135,7 @@ Vue.transition('section-project-element-title', {
     justify-content center
     align-items center
     text-align center
-    color #fff
+    color #ddd
     font-size 3em
     perspective 600px;
     .container
@@ -161,6 +161,6 @@ Vue.transition('section-project-element-title', {
       @media screen and (max-width: 40em)
         font-size 0.2em
     .line
-      background-color #fff
+      background-color #ddd
       height 10px
 </style>

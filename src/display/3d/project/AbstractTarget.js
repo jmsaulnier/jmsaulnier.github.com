@@ -3,16 +3,6 @@ export default class AbstractTarget {
   constructor (targetData, options) {
 
     this.targetData = targetData
-
-    /**
-    this.init = this.init.bind(this)
-    this.load = this.load.bind(this)
-    this.onLoad = this.onLoad.bind(this)
-    this.destroy = this.destroy.bind(this)
-    this.resize = this.resize.bind(this)
-    this.getParticles = this.getParticles.bind(this)
-	**/
-
     this.onLoadCallback
   }
 

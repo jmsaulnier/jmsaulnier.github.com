@@ -11,21 +11,6 @@ export default class ImageTarget extends AbstractTarget {
 
     this.targetData = targetData
 
-    console.log('this.targetData', this.targetData)
-
-    /**
-    this.init = this.init.bind(this)
-    this.resize = this.resize.bind(this)
-    this.updatePositionAdjustments = this.updatePositionAdjustments.bind(this)
-    this.updateParticlePositions = this.updateParticlePositions.bind(this)
-    this.load = this.load.bind(this)
-    this.onLoad = this.onLoad.bind(this)
-    this.processImage = this.processImage.bind(this)
-    this.getImageDataFromImg = this.getImageDataFromImg.bind(this)
-    this.randomVertexInImage = this.randomVertexInImage.bind(this)
-    this.getVertexForPixelDataOffset = this.getVertexForPixelDataOffset.bind(this)
-    **/
-
     this.centerVertex = this.centerVertex.bind(this)
     this.scalevertex = this.scalevertex.bind(this)
     this.getParticles = this.getParticles.bind(this)

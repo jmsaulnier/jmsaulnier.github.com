@@ -16,15 +16,6 @@ export default class MultiTarget extends AbstractTarget {
 
     this.targetData = targetData
 
-    /**
-    this.load = this.load.bind(this);
-    this.onTargetLoad = this.onTargetLoad.bind(this);
-    this.prepareParticles = this.prepareParticles.bind(this);
-    this.getTargetOffsets = this.getTargetOffsets.bind(this);
-    this.resize = this.resize.bind(this);
-    this.getParticles = this.getParticles.bind(this);
-    **/
-
     this.targets = []
     this.particles
     this.container = this.targetData.container

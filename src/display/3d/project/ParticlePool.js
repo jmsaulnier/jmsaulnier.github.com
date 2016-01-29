@@ -6,19 +6,6 @@ export default class ParticlePool {
 
   constructor (options) {
 
-	/**
-	this.destroy = this.destroy.bind(this);
-    this.setTarget = this.setTarget.bind(this);
-    this.resize = this.resize.bind(this);
-    this.createParticles = this.createParticles.bind(this);
-    this.getParticles = this.getParticles.bind(this);
-    this.makeRandomVertex = this.makeRandomVertex.bind(this);
-    this.nextIndexForPool = this.nextIndexForPool.bind(this);
-    this.morph = this.morph.bind(this);
-    this.getRotationY = this.getRotationY.bind(this);
-    this.setRotationY = this.setRotationY.bind(this);
-   	**/
-
     this.particles
     this.respondingToMouse = false
     this.morphing = false

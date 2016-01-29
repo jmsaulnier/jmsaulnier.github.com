@@ -29,7 +29,8 @@ export default {
 
     this.loader = new Loader()
 
-    this.loader.addImage('assets/images/yeoman.png')
+    this.loader.addImage('assets/images/projects/griffin.png')
+    this.loader.addJSON('assets/images/projects/helmet.json')
 
     this.loader.onProgress.add(this.loaderProgressHandler)
     this.loader.onComplete.addOnce(this.loaderCompleteHandler)
@@ -109,17 +110,17 @@ export default {
 
       Animate(this.$els.loading,
         { opacity: 0 },
-        { duration: 0, delay: 100}
+        { duration: 0, delay: 300}
       )
 
       Animate(this.$els.backgroundBottom,
         { translateY: '100%' },
-        { duration: 1000, delay: 100, easing: 'easeInOutCubic' }
+        { duration: 1000, delay: 300, easing: 'easeInOutCubic' }
       )
 
       Animate(this.$els.backgroundTop,
         { translateY: '-100%' },
-        { duration: 1000, delay: 100, easing: 'easeInOutCubic', complete: () => { Store.actions.hide() } }
+        { duration: 1000, delay: 300, easing: 'easeInOutCubic', complete: () => { Store.actions.hide() } }
       )
     }
   }

@@ -192,5 +192,5 @@ Vue.transition('section-about-close-button', {
     top 0
     width 100%
     height 100%
-    background-color #222
+    background-color #111
 </style>
