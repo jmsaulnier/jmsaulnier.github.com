@@ -18,6 +18,8 @@ import Resize from 'brindille-resize'
 import Css from 'dom-css'
 import Store from '../../store/preloader'
 
+import { data } from '../../api/projects'
+
 export default {
 
   attached () {
@@ -29,8 +31,9 @@ export default {
 
     this.loader = new Loader()
 
-    this.loader.addImage('assets/images/projects/griffin.png')
-    this.loader.addJSON('assets/images/projects/helmet.json')
+    Object.keys(data).forEach(function (key) {
+      this.loader.addImage('assets/images/projects/' + key + '.png')
+    }.bind(this))
 
     this.loader.onProgress.add(this.loaderProgressHandler)
     this.loader.onComplete.addOnce(this.loaderCompleteHandler)

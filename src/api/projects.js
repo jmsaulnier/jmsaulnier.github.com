@@ -1,4 +1,4 @@
-import ModelTarget from '../display/3d/project/ModelTarget'
+// import ModelTarget from '../display/3d/project/ModelTarget'
 import ImageTarget from '../display/3d/project/ImageTarget'
 
 export const data = {
@@ -55,15 +55,9 @@ export const data = {
     category: 'Live vehicle transformation',
     description: 'Porsche... [DESC]',
     sketch: {
-      type: ModelTarget,
-      url: 'assets/images/projects/porsche-cayman.json',
+      type: ImageTarget,
+      url: 'assets/images/projects/magic-mirror.png',
       options: {
-        color: {
-          r: 1,
-          g: 1,
-          b: 1
-        },
-        scale: 80,
         size: 1,
         respondsToMouse: true
       }
@@ -79,7 +73,7 @@ export const data = {
       type: ImageTarget,
       url: 'assets/images/projects/caines-quest.png',
       options: {
-        size: 3,
+        size: 1,
         respondsToMouse: true
       }
     }

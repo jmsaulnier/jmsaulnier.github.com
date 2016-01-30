@@ -1,6 +1,8 @@
 import THREE from 'three'
 import Resize from 'brindille-resize'
 
+import isMobile from '../../../helpers/detect'
+
 import ModelTarget from './ModelTarget'
 import ImageTarget from './ImageTarget'
 import ParticlePool from './ParticlePool'
@@ -29,7 +31,7 @@ export default class Sketch {
       maxMouseRotation: Math.PI / 6,
       mouseRotationFriction: 0.2,
       numFloatingParticles: 40,
-      numParticles: 24000,
+      numParticles: (isMobile) ? 4000 : 20000,
       particleRevertDelay: 0.01,
       revertDuration: 800,
       sizeAttenuation: true,
