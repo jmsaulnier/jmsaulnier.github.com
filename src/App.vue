@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <component-footer></component-footer>
     <section-preloader v-if="!isHidden"></section-preloader>
     <section-about></section-about>
-    <router-view class="sections" v-if="isLoaded"></router-view>
-    <component-background v-if="isLoaded"></component-background>
+    <router-view class="component-sections" v-if="isLoaded"></router-view>
+    <div v-el:background class="component-background" v-show="isLoaded"></div>
   </div>
 </template>
 
 <script>
-import ComponentFooter from './display/components/Footer.vue'
-import ComponentBackground from './display/components/Background.vue'
+import Resize from 'brindille-resize'
+import Css from 'dom-css'
+
 import SectionPreloader from './display/sections/Preloader.vue'
 import SectionAbout from './display/sections/About.vue'
 
@@ -18,10 +18,8 @@ import StorePreloader from './store/preloader'
 
 export default {
   components: {
-    ComponentFooter,
     SectionPreloader,
-    SectionAbout,
-    ComponentBackground
+    SectionAbout
   },
 
   computed: {
@@ -31,19 +29,35 @@ export default {
     isHidden () {
       return StorePreloader.state.isHidden
     }
+  },
+  ready () {
+
+    this.resize()
+    Resize.addListener(this.resize)
+
+  },
+  methods: {
+    /**
+    * resize
+    */
+    resize () {
+
+      Css(this.$els.background, { width: Resize.width, height: Resize.height })
+    }
   }
 }
 </script>
 
 <style lang="stylus">
-@require 'display/styles/normalize';
-
-font-stack = Helvetica, sans-serif
-primary-color = #42b983
+@require 'display/styles/normalize'
+@import 'display/styles/variables'
 
 #app
-  font 100% font-stack
-  color primary-color
-.sections
+  font 100% $font-content
+.component-sections
   position absolute
+.component-background
+  position absolute
+  top 0
+  background-color $color-background
 </style>

@@ -1,12 +1,17 @@
 <template>
   <div class="section-about">
     <aside v-el:content class="content" v-show="isOpen" transition='section-about-content'>
-      <div v-el:background @click="close" class="background"></div>
+      <div v-el:background class="background"></div>
       <div v-el="container" class="container">
+        <a v-el:close-button @click="close" class="close-button" v-show="isOpen" transition='section-about-close-button'>
+          Close <span class="line"></span>
+        </a>
         ... Blablabla
       </div>
     </aside>
-    <a v-el:open-button v-show="!isOpen" class="open-button" @click="open" transition='section-about-open-button'> &#8212; About</a>
+    <a v-el:open-button v-show="!isOpen" class="open-button" @click="open" transition='section-about-open-button'>
+      <span class="line"></span> About
+    </a>
   </div>
 </template>
 
@@ -46,7 +51,8 @@ export default {
     resize () {
 
       Css(this.$els.content, { width: Resize.width, height: Resize.height })
-      Css(this.$els.openButton, { top: Resize.width * 0.02, left: Resize.width * 0.02 })
+      Css(this.$els.openButton, { top: 35 })
+      Css(this.$els.closeButton, { top: 35 })
     },
     /**
     * open
@@ -66,7 +72,7 @@ export default {
 }
 
 /**
-========== TRANSITION - section-about-open
+========== TRANSITION - section-about-open-button
 **/
 
 Vue.transition('section-about-open-button', {
@@ -74,7 +80,7 @@ Vue.transition('section-about-open-button', {
   enter: function (el, done) {
 
     Animate(el,
-      { opacity: [1, 'easeInSine', 0], translateX: [0, 'easeInSine', -Resize.width * 0.01] },
+      { opacity: [1, 'easeInSine', 0], translateX: [0, 'easeInSine', -Resize.width * 0.02] },
       { duration: 200, delay: 300, complete: () => {
         done()
       }}
@@ -83,7 +89,7 @@ Vue.transition('section-about-open-button', {
   leave: function (el, done) {
 
     Animate(el,
-      { opacity: [0, 'easeInSine', 1], translateX: [-Resize.width * 0.01, 'easeInSine', 0] },
+      { opacity: [0, 'easeInSine', 1], translateX: [-Resize.width * 0.02, 'easeInSine', 0] },
       { duration: 200, complete: () => {
         done()
       }}
@@ -102,7 +108,7 @@ Vue.transition('section-about-content', {
     Css(el, { opacity: 0 })
 
     Animate(el,
-      { opacity: [0.8, 'easeInSine', 0] },
+      { opacity: [1, 'easeInSine', 0] },
       { duration: 400, delay: 200, complete: () => {
         done()
       }}
@@ -111,13 +117,40 @@ Vue.transition('section-about-content', {
   leave: function (el, done) {
 
     Animate(el,
-      { opacity: [0, 'easeInSine', 0.8] },
+      { opacity: [0, 'easeInSine', 1] },
       { duration: 400, complete: () => {
         done()
       }}
     )
   }
 })
+
+/**
+========== TRANSITION - section-about-close-button
+**/
+
+Vue.transition('section-about-close-button', {
+  css: false,
+  enter: function (el, done) {
+
+    Animate(el,
+      { opacity: [1, 'easeInSine', 0], translateX: [0, 'easeInSine', Resize.width * 0.02] },
+      { duration: 200, delay: 300, complete: () => {
+        done()
+      }}
+    )
+  },
+  leave: function (el, done) {
+
+    Animate(el,
+      { opacity: [0, 'easeInSine', 1], translateX: [Resize.width * 0.02, 'easeInSine', 0] },
+      { duration: 200, complete: () => {
+        done()
+      }}
+    )
+  }
+})
+
 </script>
 
 
@@ -129,14 +162,28 @@ Vue.transition('section-about-content', {
 .section-about
   position absolute
   z-index('.section-about')
-  color #000
-  .open-button
+  color $color-link
+  font-family $font-link
+  .open-button,
+  .close-button
     display inline-block
     position absolute
     top 0
-    font-size 0.9em
+    font-size 0.6em
+    vertical-align middle
+    text-transform uppercase
+    letter-spacing 0.2em
     white-space nowrap
     cursor pointer
+    .line
+      display inline-block
+      width 35px
+      height 1px
+      margin-bottom 0.35em
+      background-color $color-link
+      transform-origin -100% 0
+  .close-button
+    right 0
   .content
     position relative
   .container
@@ -146,5 +193,5 @@ Vue.transition('section-about-content', {
     top 0
     width 100%
     height 100%
-    background-color #fff
+    background-color #111
 </style>

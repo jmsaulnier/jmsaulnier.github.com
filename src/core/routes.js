@@ -1,4 +1,4 @@
-import Projects from '../api/projects'
+import { data } from '../api/projects'
 
 export function configRouter (router) {
 
@@ -8,7 +8,7 @@ export function configRouter (router) {
   })
 
   router.redirect({
-    '*': '/project/' + Object.keys(Projects)[0]
+    '*': '/project/' + Object.keys(data)[0]
   })
 
   router.afterEach(function (transition) {

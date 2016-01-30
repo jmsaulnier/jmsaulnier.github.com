@@ -1,10 +1,9 @@
 <template>
   <span class="element-title">
-    <span>
-      <h2>{{title}}</h2>
-      <br />
-      <h3>{{category}}</h3>
-      <h4><a @click="openDetails">View details</a></h4>
+    <div v-el:container class="container">
+      <h2><a @click="openDetails">{{title}}</a></h2>
+      <div class="line"></div>
+      <h3><a @click="openDetails">{{category}}</a></h3>
     </div>
   </span>
 </template>
@@ -18,7 +17,7 @@ import Animate from 'velocity-animate'
 import Resize from 'brindille-resize'
 import Css from 'dom-css'
 
-import Projects from '../../../api/projects'
+import { data } from '../../../api/projects'
 import Store from '../../../store/project'
 
 export default {
@@ -29,10 +28,15 @@ export default {
       required: true
     }
   },
+  computed: {
+    isDetailsOpen () {
+      return Store.state.isDetailsOpen
+    }
+  },
   data () {
     return {
-      title: Projects[this.project].title,
-      category: Projects[this.project].category
+      title: data[this.project].title,
+      category: data[this.project].category
     }
   },
   attached () {
@@ -58,7 +62,10 @@ export default {
     */
     resize () {
 
-      Css(this.$el, { width: Resize.width, height: Resize.height })
+      Css(this.$els.container, {
+        top: (Resize.height - this.$els.container.offsetHeight) * 0.5 + Resize.height * 0.25,
+        left: (Resize.width - this.$els.container.offsetWidth) * 0.5
+      })
     },
     /**
     * openDetails
@@ -66,6 +73,13 @@ export default {
     openDetails () {
 
       Store.actions.openDetails()
+    },
+    /**
+    * closeDetails
+    */
+    closeDetails () {
+
+      Store.actions.closeDetails()
     }
   }
 }
@@ -121,27 +135,30 @@ Vue.transition('section-project-element-title', {
     justify-content center
     align-items center
     text-align center
-    color #fff
+    color #ddd
     font-size 3em
     perspective 600px;
-    h2, h3
-      position relative
-      display inline-block
-      background-color #000
+    .container
+      position absolute
     h2
-      margin-bottom 0.5em
+      display inline-block
+      position relative
+      white-space nowrap
+      margin-bottom 0.3em
       font-size 1em
+      font-style italic
+      font-weight 700
       @media screen and (max-width: 40em)
         font-size 0.6em
     h3
-      font-size 0.5em
-      @media screen and (max-width: 40em)
-        font-size 0.4em
-    h4
-      cursor pointer
+      display block
+      margin-top 0.5em
+      font-size 0.4em
       font-weight normal
-      font-size 0.3em
+      letter-spacing 0.05em
       @media screen and (max-width: 40em)
-        font-size 0.2em
-
+        font-size 0.3em
+    .line
+      background-color #ddd
+      height 10px
 </style>
