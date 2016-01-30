@@ -6,25 +6,24 @@
 
 
 <script>
-import Vue from 'vue'
-import Animate from 'velocity-animate'
 import Resize from 'brindille-resize'
 import Css from 'dom-css'
 
-import Loader from '../../sketch/project/loader'
+import Sketch from '../../3d/project'
+
+import Store from '../../../store/project'
+import { data, getIndex } from '../../../api/projects'
 
 export default {
-
-  props: {
-    project: {
-      type: String,
-      required: true
-    }
-  },
 
   data () {
     return {
       sketch: null
+    }
+  },
+  computed: {
+    projectIndex () {
+      return getIndex(Store.state.project)
     }
   },
   attached () {
@@ -32,8 +31,19 @@ export default {
     this.reset()
     Resize.addListener(this.resize)
 
-    this.sketch = Loader(this.project, this.$el)
-    this.sketch.load()
+    var targetData = []
+    Object.keys(data).forEach(function (key) {
+      targetData.push(data[key].sketch)
+    })
+
+    this.sketch = new Sketch(this.$el, targetData)
+    this.sketch.load(getIndex(Store.state.project))
+
+    this.$watch('projectIndex', function (value) {
+      if (this.sketch !== null) {
+        this.sketch.setTarget(this.projectIndex)
+      }
+    })
   },
   detached () {
 
@@ -55,38 +65,12 @@ export default {
     */
     resize () {
 
-      Css(this.$el, { width: Resize.width, height: Resize.height })
+      Css(this.$el, { width: Resize.width, height: Resize.height * 0.75})
     }
   }
 }
 
-/**
-========== TRANSITION - project-sketch
-**/
-
-Vue.transition('section-project-element-sketch', {
-  css: false,
-  enter: function (el, done) {
-
-    Animate(el,
-      { opacity: [1, 'easeInSine', 0] },
-      { duration: 400, complete: () => {
-        done()
-      }}
-    )
-  },
-  leave: function (el, done) {
-
-    Animate(el,
-      { opacity: [0, 'easeInSine', 1] },
-      { duration: 400, complete: () => {
-        done()
-      }}
-    )
-  }
-})
 </script>
-
 
 
 

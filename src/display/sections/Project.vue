@@ -1,11 +1,10 @@
 <template>
   <section class="section-project">
-    <element-details v-if="isDetailsOpen" transition='section-project-element-details'></element-details>
     <div class="element-titles" v-for="project in projects" transition='section-project-element-title'>
       <element-title v-bind:project="project"></element-title>
     </div>
-    <element-navigation ></element-navigation>
-    <div class="element-sketches" v-for="project in projects" transition='section-project-element-sketch'>
+    <element-navigation></element-navigation>
+    <div class="element-sketches">
       <element-sketch v-bind:project="project"></element-sketch>
     </div>
   </section>
@@ -18,9 +17,8 @@
 import ElementSketch from './project/Sketch.vue'
 import ElementTitle from './project/Title.vue'
 import ElementNavigation from './project/Navigation.vue'
-import ElementDetails from './project/Details.vue'
 
-import Projects from '../../api/projects'
+import { data } from '../../api/projects'
 import Store from '../../store/project'
 import StoreAbout from '../../store/about'
 
@@ -29,13 +27,12 @@ export default {
   components: {
     ElementSketch,
     ElementTitle,
-    ElementNavigation,
-    ElementDetails
+    ElementNavigation
   },
   route: {
     data: function (transition) {
 
-      if (Projects[this.$route.params.id]) {
+      if (data[this.$route.params.id]) {
 
         this.projects.push(this.$route.params.id)
 
@@ -57,11 +54,6 @@ export default {
   data () {
     return {
       projects: []
-    }
-  },
-  computed: {
-    isDetailsOpen () {
-      return Store.state.isDetailsOpen
     }
   }
 }

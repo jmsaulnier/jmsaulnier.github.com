@@ -18,6 +18,8 @@ import Resize from 'brindille-resize'
 import Css from 'dom-css'
 import Store from '../../store/preloader'
 
+import { data } from '../../api/projects'
+
 export default {
 
   attached () {
@@ -29,7 +31,9 @@ export default {
 
     this.loader = new Loader()
 
-    this.loader.addImage('assets/images/yeoman.png')
+    Object.keys(data).forEach(function (key) {
+      this.loader.addImage('assets/images/projects/' + key + '.png')
+    }.bind(this))
 
     this.loader.onProgress.add(this.loaderProgressHandler)
     this.loader.onComplete.addOnce(this.loaderCompleteHandler)
@@ -109,17 +113,17 @@ export default {
 
       Animate(this.$els.loading,
         { opacity: 0 },
-        { duration: 0, delay: 100}
+        { duration: 0, delay: 300}
       )
 
       Animate(this.$els.backgroundBottom,
         { translateY: '100%' },
-        { duration: 1000, delay: 100, easing: 'easeInOutCubic' }
+        { duration: 1000, delay: 300, easing: 'easeInOutCubic' }
       )
 
       Animate(this.$els.backgroundTop,
         { translateY: '-100%' },
-        { duration: 1000, delay: 100, easing: 'easeInOutCubic', complete: () => { Store.actions.hide() } }
+        { duration: 1000, delay: 300, easing: 'easeInOutCubic', complete: () => { Store.actions.hide() } }
       )
     }
   }
