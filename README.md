@@ -1,6 +1,6 @@
 # jmsaulnier.github.com
 
-> \o/
+> WIP \o/ 
 
 ## Build Setup
 
