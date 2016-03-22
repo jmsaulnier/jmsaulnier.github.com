@@ -16,9 +16,8 @@ import Animate from 'velocity-animate'
 import Loader from 'preloader'
 import Resize from 'brindille-resize'
 import Css from 'dom-css'
+import CssTransform from 'dom-css-transform'
 import Store from '../../store/preloader'
-
-import { data } from '../../api/projects'
 
 export default {
 
@@ -30,10 +29,7 @@ export default {
     Resize.addListener(this.resize)
 
     this.loader = new Loader()
-
-    Object.keys(data).forEach(function (key) {
-      this.loader.addImage('assets/images/projects/' + key + '.png')
-    }.bind(this))
+    this.loader.addImage('assets/yeoman.png')
 
     this.loader.onProgress.add(this.loaderProgressHandler)
     this.loader.onComplete.addOnce(this.loaderCompleteHandler)
@@ -51,10 +47,7 @@ export default {
 
       this.resize()
 
-      Animate(this.$els.loadingProgress,
-        { scaleX: 0 },
-        { duration: 0 }
-      )
+      CssTransform(this.$els.loadingProgress, { scale: [1, 0, 1] })
     },
     /**
     * resize
@@ -80,14 +73,22 @@ export default {
 
       Store.actions.progressUpdate(progress)
 
+      CssTransform(this.$els.loadingProgress, { scale: [1, progress, 1] })
+
+      if (isComplete) {
+        this.hide()
+      }
+
+      /**
       Animate(this.$els.loadingProgress,
         { scaleX: progress },
-        { duration: 400, easing: 'easeInOutExpo', queue: false, complete: () => {
+        { duration: 1000, easing: 'easeInOutExpo', queue: true, complete: () => {
+          console.log('complete')
           if (isComplete) {
             this.hide()
           }
         }}
-      )
+      )**/
     },
     /**
     * loaderProgressHandler
@@ -113,17 +114,17 @@ export default {
 
       Animate(this.$els.loading,
         { opacity: 0 },
-        { duration: 0, delay: 300}
+        { duration: 200, delay: 300}
       )
 
       Animate(this.$els.backgroundBottom,
         { translateY: '100%' },
-        { duration: 1000, delay: 300, easing: 'easeInOutCubic' }
+        { duration: 1000, delay: 500, easing: 'easeInOutCubic' }
       )
 
       Animate(this.$els.backgroundTop,
         { translateY: '-100%' },
-        { duration: 1000, delay: 300, easing: 'easeInOutCubic', complete: () => { Store.actions.hide() } }
+        { duration: 1000, delay: 500, easing: 'easeInOutCubic', complete: () => { Store.actions.hide() } }
       )
     }
   }
@@ -151,9 +152,10 @@ export default {
     width 100%
     height 1px
     background-color #ccc
+    transition: transform 0.3s ease;
   .loading-progress
     width 100%
     height 100%
-    background-color #333
+    background-color #000
     transform-origin 0 0
 </style>
