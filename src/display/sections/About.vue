@@ -6,7 +6,6 @@
         <a v-el:close-button @click="close" class="close-button" v-show="isOpen" transition='section-about-close-button'>
           Close <span class="line"></span>
         </a>
-        ... Blablabla
       </div>
     </aside>
     <a v-el:open-button v-show="!isOpen" class="open-button" @click="open" transition='section-about-open-button'>

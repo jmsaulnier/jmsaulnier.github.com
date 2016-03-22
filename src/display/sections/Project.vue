@@ -1,12 +1,5 @@
 <template>
   <section class="section-project">
-    <div class="element-titles" v-for="project in projects" transition='section-project-element-title'>
-      <element-title v-bind:project="project"></element-title>
-    </div>
-    <element-navigation></element-navigation>
-    <div class="element-sketches">
-      <element-sketch v-bind:project="project"></element-sketch>
-    </div>
   </section>
 </template>
 
@@ -14,9 +7,6 @@
 
 
 <script>
-import ElementSketch from './project/Sketch.vue'
-import ElementTitle from './project/Title.vue'
-import ElementNavigation from './project/Navigation.vue'
 
 import { data } from '../../api/projects'
 import Store from '../../store/project'
@@ -25,9 +15,6 @@ import StoreAbout from '../../store/about'
 export default {
 
   components: {
-    ElementSketch,
-    ElementTitle,
-    ElementNavigation
   },
   route: {
     data: function (transition) {
@@ -68,10 +55,4 @@ export default {
 
 .section-project
   color #ff0
-  .element-titles
-    position absolute
-    z-index('.section-project .element-titles')
-  .element-sketches
-    position absolute
-    z-index('.section-project .element-sketches')
 </style>
