@@ -1,8 +1,8 @@
 {
   "version": "0.1.0",
-  "name": "...",
+  "name": "JMS",
   "launch_path": "/index.html",
-  "description": "...",
+  "description": "Jean-Michel Saulnier - Creative developer",
   "icons": {
     "128": "/assets/images/touch/icon-128x128.png"
   },
@@ -18,8 +18,8 @@
   },
   "locales": {
     "en": {
-      "name": "...",
-      "description": "..."
+      "name": "JMS",
+      "description": "Jean-Michel Saulnier - Creative developer"
     }
   }
 }
